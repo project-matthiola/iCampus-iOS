@@ -9,6 +9,7 @@
 import XCTest
 @testable import iCampus
 
+// swiftlint:disable type_name
 class iCampusTests: XCTestCase {
     
     override func setUp() {
