@@ -17,6 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="RcA-PA-ekl" kind="relationship" relationship="viewControllers" id="oC0-R9-c5z"/>
@@ -149,7 +151,7 @@
         <scene sceneID="CmL-VY-bj8">
             <objects>
                 <navigationController id="KSi-xL-DEb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="活动" id="rLR-Bx-cPc"/>
+                    <tabBarItem key="tabBarItem" title="活动" image="ic_domain" id="rLR-Bx-cPc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z9b-e5-Rnu">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -166,7 +168,7 @@
         <scene sceneID="JP6-RX-DDx">
             <objects>
                 <navigationController id="RcA-PA-ekl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="新闻" id="tob-oP-9By"/>
+                    <tabBarItem key="tabBarItem" title="新闻" image="ic_public" id="tob-oP-9By"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nfa-Jl-fAr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -181,6 +183,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_domain" width="24" height="24"/>
         <image name="ic_person_white" width="24" height="24"/>
+        <image name="ic_public" width="24" height="24"/>
     </resources>
 </document>

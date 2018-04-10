@@ -6,8 +6,11 @@ target 'iCampus' do
   use_frameworks!
 
   # Pods for iCampus
-  pod 'Moya'
-  pod 'SwiftyJSON'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxDataSources'
+  pod 'Moya/RxSwift'
+  pod 'ObjectMapper'
   pod 'SwiftLint'
 
   target 'iCampusTests' do
