@@ -17,4 +17,12 @@ class MemberViewModel {
 			.mapJSON()
 			.mapObject(type: Member.self, key: "Member")
 	}
+	
+	func signup(userId: String, password: String, phone: String) -> Observable<Member> {
+		return provider.rx.request(.addMember(userId: userId, password: password, phone: phone))
+			.asObservable()
+			.filterSuccessfulStatusCodes()
+			.mapJSON()
+			.mapObject(type: Member.self, key: "Member")
+	}
 }

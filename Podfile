@@ -11,6 +11,8 @@ target 'iCampus' do
   pod 'RxDataSources'
   pod 'Moya/RxSwift'
   pod 'ObjectMapper'
+  pod 'PKHUD', '~> 5.0'
+  
   pod 'SwiftLint'
 
   target 'iCampusTests' do

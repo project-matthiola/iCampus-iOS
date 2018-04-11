@@ -12,6 +12,15 @@ import ObjectMapper
 import Moya
 
 extension Observable {
+	func mapObject<T: Mappable>(type: T.Type) -> Observable<T> {
+		return self.map { response in
+			guard let dict = response as? [String: Any] else {
+				throw RxSwiftError.parseJSONError
+			}
+			return Mapper<T>().map(JSON: dict)!
+		}
+	}
+	
 	func mapObject<T: Mappable>(type: T.Type, key: String) -> Observable<T> {
 		return self.map { response in
 			guard let dict = response as? [String: Any], let array = dict[key] as? [[String: Any]] else {

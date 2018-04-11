@@ -8,6 +8,7 @@ PODS:
     - Moya/Core
     - RxSwift (~> 4.0)
   - ObjectMapper (3.1.0)
+  - PKHUD (5.0.0)
   - Result (3.2.4)
   - RxBlocking (4.1.2):
     - RxSwift (~> 4.0)
@@ -25,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - Moya/RxSwift
   - ObjectMapper
+  - PKHUD (~> 5.0)
   - RxBlocking
   - RxCocoa
   - RxDataSources
@@ -38,6 +40,7 @@ SPEC REPOS:
     - Differentiator
     - Moya
     - ObjectMapper
+    - PKHUD
     - Result
     - RxBlocking
     - RxCocoa
@@ -51,6 +54,7 @@ SPEC CHECKSUMS:
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
@@ -59,6 +63,6 @@ SPEC CHECKSUMS:
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
 
-PODFILE CHECKSUM: b4e99a0462709209b1e9b4a789dc8e0fa1c1654d
+PODFILE CHECKSUM: 69b964a20f687522a3a38161396f007c312824d9
 
 COCOAPODS: 1.5.0
