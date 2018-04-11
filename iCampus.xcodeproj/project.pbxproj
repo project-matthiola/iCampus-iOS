@@ -16,6 +16,10 @@
 		9AD222D42079FD39007A2D8C /* iCampusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222D32079FD39007A2D8C /* iCampusTests.swift */; };
 		9AD222DF2079FD3A007A2D8C /* iCampusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222DE2079FD3A007A2D8C /* iCampusUITests.swift */; };
 		9AD222F2207D0174007A2D8C /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222F1207D0174007A2D8C /* Member.swift */; };
+		9AD222F5207DB278007A2D8C /* iCampusApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222F4207DB278007A2D8C /* iCampusApi.swift */; };
+		9AD222F8207DBA6E007A2D8C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222F7207DBA6E007A2D8C /* TestViewController.swift */; };
+		9AD222FB207DBFE4007A2D8C /* MemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222FA207DBFE4007A2D8C /* MemberViewModel.swift */; };
+		9AD222FD207DC0EE007A2D8C /* Observable+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222FC207DC0EE007A2D8C /* Observable+ObjectMapper.swift */; };
 		AD5DE1D3EB2D6601B74D7CE2 /* Pods_iCampusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E2FC3FADCA189CB17DA20D9 /* Pods_iCampusTests.framework */; };
 		EFB8CECB09E2A0A24576A1AD /* Pods_iCampus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169F48BAE3CC348754F70C2F /* Pods_iCampus.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +59,10 @@
 		9AD222DE2079FD3A007A2D8C /* iCampusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCampusUITests.swift; sourceTree = "<group>"; };
 		9AD222E02079FD3A007A2D8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AD222F1207D0174007A2D8C /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		9AD222F4207DB278007A2D8C /* iCampusApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCampusApi.swift; sourceTree = "<group>"; };
+		9AD222F7207DBA6E007A2D8C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		9AD222FA207DBFE4007A2D8C /* MemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewModel.swift; sourceTree = "<group>"; };
+		9AD222FC207DC0EE007A2D8C /* Observable+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+ObjectMapper.swift"; sourceTree = "<group>"; };
 		9BE78E7B57116E3BEFD028BA /* Pods-iCampusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCampusUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iCampusUITests/Pods-iCampusUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B241D887AEF472C98FD6B38E /* Pods-iCampusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCampusTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iCampusTests/Pods-iCampusTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1EE9DBE2584D949FBE91E65 /* Pods_iCampusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCampusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,10 +134,13 @@
 		9AD222BA2079FD38007A2D8C /* iCampus */ = {
 			isa = PBXGroup;
 			children = (
+				9AD222F6207DB982007A2D8C /* Extension */,
+				9AD222F9207DBFAF007A2D8C /* ViewModel */,
 				9AD222EF207B3870007A2D8C /* Controller */,
 				9AD222EE207B386B007A2D8C /* View */,
 				9AD222EC207B3816007A2D8C /* Model */,
 				9AD222BB2079FD38007A2D8C /* AppDelegate.swift */,
+				9AD222F4207DB278007A2D8C /* iCampusApi.swift */,
 				9AD222BF2079FD38007A2D8C /* Main.storyboard */,
 				9AD222C52079FD39007A2D8C /* Assets.xcassets */,
 				9AD222C72079FD39007A2D8C /* LaunchScreen.storyboard */,
@@ -175,8 +186,25 @@
 		9AD222EF207B3870007A2D8C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9AD222F7207DBA6E007A2D8C /* TestViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9AD222F6207DB982007A2D8C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9AD222FC207DC0EE007A2D8C /* Observable+ObjectMapper.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		9AD222F9207DBFAF007A2D8C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9AD222FA207DBFE4007A2D8C /* MemberViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D17A7949FE8AB360A0A5722F /* Pods */ = {
@@ -223,6 +251,7 @@
 				9AD222CB2079FD39007A2D8C /* Sources */,
 				9AD222CC2079FD39007A2D8C /* Frameworks */,
 				9AD222CD2079FD39007A2D8C /* Resources */,
+				951D0A2661ACE2F4D07981D3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -360,6 +389,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		951D0A2661ACE2F4D07981D3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iCampusTests/Pods-iCampusTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iCampusTests/Pods-iCampusTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9AD222F0207B4DA5007A2D8C /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,8 +482,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AD222FD207DC0EE007A2D8C /* Observable+ObjectMapper.swift in Sources */,
+				9AD222F8207DBA6E007A2D8C /* TestViewController.swift in Sources */,
 				9AD222BC2079FD38007A2D8C /* AppDelegate.swift in Sources */,
+				9AD222FB207DBFE4007A2D8C /* MemberViewModel.swift in Sources */,
 				9AD222F2207D0174007A2D8C /* Member.swift in Sources */,
+				9AD222F5207DB278007A2D8C /* iCampusApi.swift in Sources */,
 				9AD222C42079FD38007A2D8C /* iCampus.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,7 +594,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -593,7 +648,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -610,7 +665,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampus/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -626,7 +684,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampus/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -638,12 +699,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 093AC0DDF9FFF48833D0E326 /* Pods-iCampusTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampusTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -656,12 +721,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B241D887AEF472C98FD6B38E /* Pods-iCampusTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampusTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -678,7 +747,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampusUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampusUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -695,7 +768,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampusUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampusUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -9,6 +9,8 @@ PODS:
     - RxSwift (~> 4.0)
   - ObjectMapper (3.1.0)
   - Result (3.2.4)
+  - RxBlocking (4.1.2):
+    - RxSwift (~> 4.0)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxDataSources (3.0.2):
@@ -16,14 +18,18 @@ PODS:
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
-  - SwiftLint (0.25.0)
+  - RxTest (4.1.2):
+    - RxSwift (~> 4.0)
+  - SwiftLint (0.25.1)
 
 DEPENDENCIES:
   - Moya/RxSwift
   - ObjectMapper
+  - RxBlocking
   - RxCocoa
   - RxDataSources
   - RxSwift
+  - RxTest
   - SwiftLint
 
 SPEC REPOS:
@@ -33,9 +39,11 @@ SPEC REPOS:
     - Moya
     - ObjectMapper
     - Result
+    - RxBlocking
     - RxCocoa
     - RxDataSources
     - RxSwift
+    - RxTest
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -44,11 +52,13 @@ SPEC CHECKSUMS:
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxSwift: e49536837d9901277638493ea537394d4b55f570
-  SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
+  RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
 
-PODFILE CHECKSUM: e5037f64084eb6521a9703f30f4fe22829e30951
+PODFILE CHECKSUM: b4e99a0462709209b1e9b4a789dc8e0fa1c1654d
 
 COCOAPODS: 1.5.0

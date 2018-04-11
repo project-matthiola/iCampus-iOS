@@ -16,6 +16,8 @@ target 'iCampus' do
   target 'iCampusTests' do
     inherit! :search_paths
     # Pods for testing
+	pod 'RxBlocking'
+	pod 'RxTest'
   end
 
   target 'iCampusUITests' do
