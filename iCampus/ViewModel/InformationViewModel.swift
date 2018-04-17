@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import RxSwift
+
+class InformationViewModel {
+
+	func getInformations() -> Observable<[Information]> {
+		return provider.rx.request(.getInformation(id: nil))
+			.asObservable()
+			.filterSuccessfulStatusCodes()
+			.mapJSON()
+			.mapArray(type: Information.self, key: "Information")
+	}
+
+}

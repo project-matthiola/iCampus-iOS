@@ -12,6 +12,7 @@ import ObjectMapper
 import Moya
 
 extension Observable {
+
 	func mapObject<T: Mappable>(type: T.Type) -> Observable<T> {
 		return self.map { response in
 			guard let dict = response as? [String: Any] else {
@@ -30,14 +31,15 @@ extension Observable {
 		}
 	}
 	
-	func mapArray<T: Mappable>(type: T.Type) -> Observable<[T]> {
+	func mapArray<T: Mappable>(type: T.Type, key: String) -> Observable<[T]> {
 		return self.map { response in
-			guard let array = response as? [Any], let dicts = array as? [[String: Any]] else {
+			guard let dict = response as? [String: Any], let array = dict[key] as? [[String: Any]] else {
 				throw RxSwiftError.parseJSONError
 			}
-			return Mapper<T>().mapArray(JSONArray: dicts)
+			return Mapper<T>().mapArray(JSONArray: array)
 		}
 	}
+
 }
 
 enum RxSwiftError: Error {

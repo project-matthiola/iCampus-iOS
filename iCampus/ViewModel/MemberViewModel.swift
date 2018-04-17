@@ -10,12 +10,13 @@ import Foundation
 import RxSwift
 
 class MemberViewModel {
-	func getMember(userId: String) -> Observable<Member> {
-		return provider.rx.request(.getMember(userId: userId))
+
+	func getMember(id: String) -> Observable<Member> {
+		return provider.rx.request(.getMember(id: id))
 			.asObservable()
 			.filterSuccessfulStatusCodes()
 			.mapJSON()
-			.mapObject(type: Member.self, key: "Member")
+			.mapObject(type: Member.self)
 	}
 	
 	func signup(userId: String, password: String, phone: String) -> Observable<Member> {
@@ -25,4 +26,5 @@ class MemberViewModel {
 			.mapJSON()
 			.mapObject(type: Member.self, key: "Member")
 	}
+
 }

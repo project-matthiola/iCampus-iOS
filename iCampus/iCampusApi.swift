@@ -9,32 +9,36 @@
 import Foundation
 import Moya
 
-let provider = MoyaProvider<iCampusApi>()
+let provider = MoyaProvider<iCampusApi>(plugins: [RequestAlertPlugin()])
 
 // swiftlint:disable type_name
 enum iCampusApi {
-	case getMember(userId: String)
+	case getMember(id: String)
 	case addMember(userId: String, password: String, phone: String)
 	case updateMember(id: String, userId: String, password: String, phone: String, role: String, classId: String, name: String)
+	case getInformation(id: String?)
 }
 
 extension iCampusApi: TargetType {
+
 	var baseURL: URL {
 		return URL(string: "")!
 	}
 	
 	var path: String {
 		switch self {
-		case .getMember(_), .addMember(_, _, _):
+		case .addMember:
 			return "/Member"
-		case .updateMember(let id, _, _, _, _, _, _):
+		case .getMember(let id), .updateMember(let id, _, _, _, _, _, _):
 			return "/Member/\(id)"
+		case .getInformation(let id):
+			return "/Information/\(id ?? "")"
 		}
 	}
 	
 	var method: Moya.Method {
 		switch self {
-		case .getMember:
+		case .getMember, .getInformation:
 			return .get
 		case .addMember:
 			return .post
@@ -49,8 +53,8 @@ extension iCampusApi: TargetType {
 	
 	var task: Task {
 		switch self {
-		case let .getMember(userId):
-			return .requestParameters(parameters: ["Member.user_id": userId], encoding: URLEncoding.queryString)
+		case .getMember, .getInformation:
+			return .requestPlain
 		case let .addMember(userId, password, phone):
 			return .requestParameters(parameters: [
 				"user_id": userId,
@@ -69,10 +73,12 @@ extension iCampusApi: TargetType {
 				"name": name
 				], encoding: JSONEncoding.default
 			)
+
 		}
 	}
 	
 	var headers: [String: String]? {
 		return ["Content-type": "application/json"]
 	}
+
 }

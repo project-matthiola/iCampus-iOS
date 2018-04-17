@@ -10,7 +10,8 @@ import Foundation
 import ObjectMapper
 
 class Member: Mappable {
-	var id: String!
+
+	var id: Int!
 	var userId: String?
 	var password: String?
 	var phone: String?
@@ -31,4 +32,5 @@ class Member: Mappable {
 		classId <- map["class_id"]
 		name <- map["name"]
 	}
+
 }

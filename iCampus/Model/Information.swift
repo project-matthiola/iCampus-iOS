@@ -8,9 +8,11 @@
 
 import Foundation
 import ObjectMapper
+import RxDataSources
 
-class News: Mappable {
-	var id: String!
+class Information: Mappable {
+	
+	var id: Int!
 	var title: String?
 	var informationTime: Date?
 	var place: String?
@@ -22,11 +24,23 @@ class News: Mappable {
 	}
 	
 	func mapping(map: Map) {
-		id <- map["map"]
+		id <- map["id"]
 		title <- map["title"]
-		informationTime <- map["information_time"]
+		informationTime <- (map["information_time"], DateTransform())
 		place <- map["place"]
 		text <- map["text"]
 		source <- map["source"]
 	}	
+}
+
+struct SectionOfInformation {
+	var items: [Information]
+}
+
+extension SectionOfInformation: SectionModelType {
+	init(original: SectionOfInformation, items: [Information]) {
+		self = original
+		self.items = items
+	}
+
 }
