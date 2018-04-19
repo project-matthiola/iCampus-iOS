@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-let provider = MoyaProvider<iCampusApi>(plugins: [RequestAlertPlugin()])
+let provider = MoyaProvider<iCampusApi>(manager: CustomAlamofireManeger.manager(), plugins: [RequestAlertPlugin()])
 
 // swiftlint:disable type_name
 enum iCampusApi {
@@ -20,7 +20,7 @@ enum iCampusApi {
 }
 
 extension iCampusApi: TargetType {
-
+	
 	var baseURL: URL {
 		return URL(string: "")!
 	}
@@ -73,12 +73,12 @@ extension iCampusApi: TargetType {
 				"name": name
 				], encoding: JSONEncoding.default
 			)
-
+			
 		}
 	}
 	
 	var headers: [String: String]? {
 		return ["Content-type": "application/json"]
 	}
-
+	
 }

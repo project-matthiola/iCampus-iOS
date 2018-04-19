@@ -26,11 +26,12 @@ class Information: Mappable {
 	func mapping(map: Map) {
 		id <- map["id"]
 		title <- map["title"]
-		informationTime <- (map["information_time"], DateTransform())
+		informationTime <- (map["information_time"], CustomDateTransform())
 		place <- map["place"]
 		text <- map["text"]
 		source <- map["source"]
-	}	
+	}
+	
 }
 
 struct SectionOfInformation {
@@ -42,5 +43,4 @@ extension SectionOfInformation: SectionModelType {
 		self = original
 		self.items = items
 	}
-
 }
