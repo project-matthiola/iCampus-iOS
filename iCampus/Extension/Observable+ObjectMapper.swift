@@ -16,7 +16,7 @@ extension Observable {
 	func mapObject<T: Mappable>(type: T.Type) -> Observable<T> {
 		return self.map { response in
 			guard let dict = response as? [String: Any] else {
-				throw RxSwiftError.parseJSONError
+				throw iCampusError.parseJSONError
 			}
 			return Mapper<T>().map(JSON: dict)!
 		}
@@ -25,7 +25,7 @@ extension Observable {
 	func mapObject<T: Mappable>(type: T.Type, key: String) -> Observable<T> {
 		return self.map { response in
 			guard let dict = response as? [String: Any], let array = dict[key] as? [[String: Any]] else {
-				throw RxSwiftError.parseJSONError
+				throw iCampusError.parseJSONError
 			}
 			return Mapper<T>().map(JSON: array[0])!
 		}
@@ -34,14 +34,10 @@ extension Observable {
 	func mapArray<T: Mappable>(type: T.Type, key: String) -> Observable<[T]> {
 		return self.map { response in
 			guard let dict = response as? [String: Any], let array = dict[key] as? [[String: Any]] else {
-				throw RxSwiftError.parseJSONError
+				throw iCampusError.parseJSONError
 			}
 			return Mapper<T>().mapArray(JSONArray: array)
 		}
 	}
 
-}
-
-enum RxSwiftError: Error {
-	case parseJSONError
 }

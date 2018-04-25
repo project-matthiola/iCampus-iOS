@@ -18,6 +18,7 @@ class SignupViewController: UIViewController {
 	@IBOutlet weak var userIdTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var signupButton: UIButton!
+	@IBOutlet weak var backButton: UIButton!
 	
 	private let bag = DisposeBag()
 	private let memberViewModel = MemberViewModel()
@@ -28,21 +29,45 @@ class SignupViewController: UIViewController {
 		signupButton.layer.cornerRadius = 5.0
 		signupButton.layer.masksToBounds = true
 		
-		signupButton.rx.tap
-			.subscribe { event in
-				switch event {
-				case .next():
-					self.signup()
-				case .error(let error):
-					HUD.flash(.labeledError(title: "错误", subtitle: error.localizedDescription), delay: 2.0)
-				case .completed:
-					return
-				}
-			}
+		let phoneValidator = phoneTextField.rx.text
+			.orEmpty
+			.map { $0.count == 11 }
+			.share(replay: 1)
+		
+		let userIdValidator = userIdTextField.rx.text
+			.orEmpty
+			.map { $0.count == 10 || $0.count == 12 }
+			.share(replay: 1)
+		
+		let passwordValidator = passwordTextField.rx.text
+			.orEmpty
+			.map { $0.count >= 4 }
+			.share(replay: 1)
+		
+		let validator = Observable
+			.combineLatest(phoneValidator, userIdValidator, passwordValidator) { $0 && $1 && $2 }
+			.share(replay: 1)
+		
+		validator
+			.bind(to: signupButton.rx.isEnabled)
 			.disposed(by: bag)
-    }
+		
+		validator
+			.subscribe(onNext: { [unowned self] valid in
+				self.signupButton.alpha = valid ? 1 : 0.5
+			})
+			.disposed(by: bag)
+		
+		signupButton.rx.tap
+			.subscribe(onNext: { [unowned self] _ in self.signup() })
+			.disposed(by: bag)
+		
+		backButton.rx.tap
+			.subscribe(onNext: { [unowned self] _ in self.dismiss(animated: true, completion: nil) })
+			.disposed(by: bag)
+	}
 
-	func signup() {
+	fileprivate func signup() {
 		memberViewModel.signup(userId: userIdTextField.text!, password: passwordTextField.text!.md5(), phone: phoneTextField.text!)
 			.subscribe()
 			.disposed(by: bag)
@@ -53,15 +78,5 @@ class SignupViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-	
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

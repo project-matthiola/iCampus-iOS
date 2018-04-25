@@ -57,7 +57,7 @@ class InformationTableViewController: UITableViewController {
 			.disposed(by: bag)
 	}
 	
-	func getInformations() {
+	fileprivate func getInformations() {
 		informationViewModel.getInformations()
 			.subscribe { event in
 				switch event {

@@ -29,7 +29,7 @@ class MineTableViewController: UITableViewController {
 		}
     }
 	
-	func configureLabel(_ name: String, _ userId: String) {
+	fileprivate func configureLabel(_ name: String, _ userId: String) {
 		nameLabel.text = name
 		userIdLabel.text = userId
 	}
