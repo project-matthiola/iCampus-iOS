@@ -12,6 +12,7 @@ target 'iCampus' do
   pod 'Moya/RxSwift'
   pod 'ObjectMapper'
   pod 'PKHUD', '~> 5.0'
+  pod 'CryptoSwift'
   
   pod 'SwiftLint'
 

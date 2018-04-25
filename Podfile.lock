@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.1)
+  - CryptoSwift (0.9.0)
   - Differentiator (3.0.2)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
@@ -24,6 +25,7 @@ PODS:
   - SwiftLint (0.25.1)
 
 DEPENDENCIES:
+  - CryptoSwift
   - Moya/RxSwift
   - ObjectMapper
   - PKHUD (~> 5.0)
@@ -37,6 +39,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - CryptoSwift
     - Differentiator
     - Moya
     - ObjectMapper
@@ -51,6 +54,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  CryptoSwift: bca8c5b653dcc2d9734409242a070ff53bafac86
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
@@ -63,6 +67,6 @@ SPEC CHECKSUMS:
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
 
-PODFILE CHECKSUM: 69b964a20f687522a3a38161396f007c312824d9
+PODFILE CHECKSUM: a2e27f77c004a5ba8ff6f0f47deb2b83fe094d3f
 
 COCOAPODS: 1.5.0

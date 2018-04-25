@@ -25,12 +25,14 @@ class InformationTableViewController: UITableViewController {
 	
 	private let bag = DisposeBag()
 	private let informationViewModel = InformationViewModel()
-	private var sections = [SectionOfInformation]()
+	private var sections = BehaviorRelay<[SectionOfInformation]>(value: [])
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.tableView.dataSource = nil
+		self.refreshControl = UIRefreshControl()
+		let refreshControl = self.refreshControl!
 		
 		let dataSource = RxTableViewSectionedReloadDataSource<SectionOfInformation>(configureCell: { (_, tv, ip, item) in
 			// swiftlint:disable force_cast
@@ -42,17 +44,29 @@ class InformationTableViewController: UITableViewController {
 			return cell
 		})
 		
+		refreshControl.rx.controlEvent(.valueChanged)
+			.subscribe { [unowned self] _ in
+				self.getInformations()
+				refreshControl.endRefreshing()
+			}
+			.disposed(by: bag)
+		
+		getInformations()
+		sections.asObservable()
+			.bind(to: tableView.rx.items(dataSource: dataSource))
+			.disposed(by: bag)
+	}
+	
+	func getInformations() {
 		informationViewModel.getInformations()
 			.subscribe { event in
 				switch event {
 				case .next(let information):
-					self.sections.append(SectionOfInformation(items: information))
+					self.sections.accept([SectionOfInformation(items: information)])
 				case .error(let error):
 					HUD.flash(.labeledError(title: "错误", subtitle: error.localizedDescription), delay: 2.0)
 				case .completed:
-					Observable.just(self.sections)
-						.bind(to: self.tableView.rx.items(dataSource: dataSource))
-						.disposed(by: self.bag)
+					return
 				}
 			}
 			.disposed(by: bag)

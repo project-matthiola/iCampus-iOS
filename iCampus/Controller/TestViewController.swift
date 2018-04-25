@@ -15,7 +15,7 @@ class TestViewController: UIViewController {
 	private let memberViewModel = MemberViewModel()
 	
 	@IBAction func act(_ sender: UIButton) {
-		memberViewModel.getMember(id: "1523349945968")
+		memberViewModel.getMember(id: 1523349945968)
 			.subscribe { event in
 				switch event {
 				case .next(let member):

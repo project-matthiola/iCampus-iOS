@@ -13,10 +13,11 @@ let provider = MoyaProvider<iCampusApi>(manager: CustomAlamofireManeger.manager(
 
 // swiftlint:disable type_name
 enum iCampusApi {
-	case getMember(id: String)
+	case getMember(id: Int)
 	case addMember(userId: String, password: String, phone: String)
-	case updateMember(id: String, userId: String, password: String, phone: String, role: String, classId: String, name: String)
+	case updateMember(id: Int, userId: String, password: String, phone: String, role: String, classId: String, name: String)
 	case getInformation(id: String?)
+	case login(userId: String)
 }
 
 extension iCampusApi: TargetType {
@@ -27,7 +28,7 @@ extension iCampusApi: TargetType {
 	
 	var path: String {
 		switch self {
-		case .addMember:
+		case .addMember, .login:
 			return "/Member"
 		case .getMember(let id), .updateMember(let id, _, _, _, _, _, _):
 			return "/Member/\(id)"
@@ -38,7 +39,7 @@ extension iCampusApi: TargetType {
 	
 	var method: Moya.Method {
 		switch self {
-		case .getMember, .getInformation:
+		case .getMember, .getInformation, .login:
 			return .get
 		case .addMember:
 			return .post
@@ -73,7 +74,8 @@ extension iCampusApi: TargetType {
 				"name": name
 				], encoding: JSONEncoding.default
 			)
-			
+		case let .login(userId):
+			return .requestParameters(parameters: ["Member.user_id": userId], encoding: URLEncoding.queryString)
 		}
 	}
 	
