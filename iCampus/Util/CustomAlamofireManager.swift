@@ -10,14 +10,14 @@ import Foundation
 import Alamofire
 
 class CustomAlamofireManeger {
-
-	static func manager() -> Alamofire.SessionManager {
-		let configuration = URLSessionConfiguration.default
-		configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-		configuration.timeoutIntervalForRequest = 5
-		let manager = Alamofire.SessionManager(configuration: configuration)
-		manager.startRequestsImmediately = false
-		return manager
-	}
-
+    
+    static func manager() -> Alamofire.SessionManager {
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+        configuration.timeoutIntervalForRequest = 5
+        let manager = Alamofire.SessionManager(configuration: configuration)
+        manager.startRequestsImmediately = false
+        return manager
+    }
+    
 }

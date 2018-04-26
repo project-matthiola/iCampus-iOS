@@ -1,5 +1,5 @@
 //
-//  MineTableViewController.swift
+//  PersonalInformationTableViewController.swift
 //  iCampus
 //
 //  Created by Yuchen Cheng on 2018/4/25.
@@ -10,10 +10,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MineTableViewController: UITableViewController {
+class PersonalInformationTableViewController: UITableViewController {
     
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userIdLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var classIdLabel: UILabel!
     
     private let bag = DisposeBag()
     private let memberViewModel = MemberViewModel()
@@ -24,15 +26,13 @@ class MineTableViewController: UITableViewController {
         if let id = iCampusPersistence().getId() {
             memberViewModel.getMember(id: id)
                 .subscribe(onNext: { [unowned self] member in
-                    self.configureLabel(member.name ?? "未填写", member.userId!)
+                    self.userIdLabel.text = member.userId ?? ""
+                    self.nameLabel.text = member.name ?? "未填写"
+                    self.phoneLabel.text = member.phone ?? ""
+                    self.classIdLabel.text = member.classId ?? "未填写"
                 })
                 .disposed(by: bag)
         }
-    }
-    
-    fileprivate func configureLabel(_ name: String, _ userId: String) {
-        nameLabel.text = name
-        userIdLabel.text = userId
     }
     
     override func didReceiveMemoryWarning() {

@@ -10,29 +10,29 @@ import Foundation
 import RxSwift
 
 class MemberViewModel {
-
-	func getMember(id: Int) -> Observable<Member> {
-		return provider.rx.request(.getMember(id: id))
-			.asObservable()
-			.filterSuccessfulStatusCodes()
-			.mapJSON()
-			.mapObject(type: Member.self)
-	}
-	
-	func signup(userId: String, password: String, phone: String) -> Observable<Bool> {
-		return provider.rx.request(.addMember(userId: userId, password: password, phone: phone))
-			.asObservable()
-			.filterSuccessfulStatusCodes()
-			.mapJSON()
-			.mapObject(type: Member.self)
-			.map { $0.id != nil }
-	}
-
-	func login(userId: String, password: String) -> Observable<Member> {
-		return provider.rx.request(.login(userId: userId))
-			.asObservable()
-			.filterSuccessfulStatusCodes()
-			.mapJSON()
-			.mapObject(type: Member.self, key: "Member")
-	}
+    
+    func getMember(id: Int) -> Observable<Member> {
+        return provider.rx.request(.getMember(id: id))
+            .asObservable()
+            .filterSuccessfulStatusCodes()
+            .mapJSON()
+            .mapObject(type: Member.self)
+    }
+    
+    func signup(userId: String, password: String, phone: String) -> Observable<Bool> {
+        return provider.rx.request(.addMember(userId: userId, password: password, phone: phone))
+            .asObservable()
+            .filterSuccessfulStatusCodes()
+            .mapJSON()
+            .mapObject(type: Member.self)
+            .map { $0.id != nil }
+    }
+    
+    func login(userId: String, password: String) -> Observable<Member> {
+        return provider.rx.request(.login(userId: userId))
+            .asObservable()
+            .filterSuccessfulStatusCodes()
+            .mapJSON()
+            .mapObject(type: Member.self, key: "Member")
+    }
 }

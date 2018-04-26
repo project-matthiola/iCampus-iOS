@@ -10,6 +10,6 @@ import Foundation
 
 // swiftlint:disable type_name
 enum iCampusError: Error {
-	case parseJSONError
-	case loginError
+    case parseJSONError
+    case loginError
 }

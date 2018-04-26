@@ -282,22 +282,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ERc-n1-Jfa" id="7dK-Oa-yrC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gyc-Fw-Bs2">
-                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gyc-Fw-Bs2" id="3en-n0-ehD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Esq-L1-nny">
-                                        <rect key="frame" x="0.0" y="123" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Esq-L1-nny" id="EY5-vY-66a">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qY2-W6-aHj">
+                                                    <rect key="frame" x="310" y="6" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用 Touch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaL-43-vzv">
+                                                    <rect key="frame" x="16" y="11" width="107" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="qY2-W6-aHj" secondAttribute="trailing" constant="16" id="4ew-q9-oar"/>
+                                                <constraint firstItem="vaL-43-vzv" firstAttribute="centerY" secondItem="7dK-Oa-yrC" secondAttribute="centerY" id="Sbb-cB-2P3"/>
+                                                <constraint firstItem="qY2-W6-aHj" firstAttribute="centerY" secondItem="7dK-Oa-yrC" secondAttribute="centerY" id="ixU-MR-jrc"/>
+                                                <constraint firstItem="vaL-43-vzv" firstAttribute="leading" secondItem="7dK-Oa-yrC" secondAttribute="leading" constant="16" id="wb1-5T-bLB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -305,7 +306,7 @@
                             <tableViewSection id="gyN-en-yqO">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="inp-0g-vh9">
-                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="115" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="inp-0g-vh9" id="o1f-xf-7Mq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -348,7 +349,7 @@
         <!--个人资料-->
         <scene sceneID="aZk-9Z-1DX">
             <objects>
-                <tableViewController id="zl3-Jv-3oy" sceneMemberID="viewController">
+                <tableViewController id="zl3-Jv-3oy" customClass="PersonalInformationTableViewController" customModule="iCampus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Bmp-gr-V3Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -461,6 +462,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="个人资料" id="R13-wV-aga"/>
+                    <connections>
+                        <outlet property="classIdLabel" destination="mcW-dW-gLW" id="sdM-Ku-lQE"/>
+                        <outlet property="nameLabel" destination="zDl-2x-svf" id="HiJ-Zk-CSu"/>
+                        <outlet property="phoneLabel" destination="FM3-bB-cV7" id="3aU-tq-tRX"/>
+                        <outlet property="userIdLabel" destination="5xE-aD-Ld5" id="Ogb-iz-R1r"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWK-c1-dHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

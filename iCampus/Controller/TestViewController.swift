@@ -10,44 +10,44 @@ import UIKit
 import RxSwift
 
 class TestViewController: UIViewController {
-
-	private let bag = DisposeBag()
-	private let memberViewModel = MemberViewModel()
-	
-	@IBAction func act(_ sender: UIButton) {
-		memberViewModel.getMember(id: 1523349945968)
-			.subscribe { event in
-				switch event {
-				case .next(let member):
-					print(member)
-				case .error(let error):
-					print(error)
-				case .completed:
-					return
-				}
-			}
-			.disposed(by: bag)
-	}
-	
-	override func viewDidLoad() {
+    
+    private let bag = DisposeBag()
+    private let memberViewModel = MemberViewModel()
+    
+    @IBAction func act(_ sender: UIButton) {
+        memberViewModel.getMember(id: 1523349945968)
+            .subscribe { event in
+                switch event {
+                case .next(let member):
+                    print(member)
+                case .error(let error):
+                    print(error)
+                case .completed:
+                    return
+                }
+            }
+            .disposed(by: bag)
+    }
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
