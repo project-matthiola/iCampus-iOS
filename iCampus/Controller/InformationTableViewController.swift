@@ -58,7 +58,8 @@ class InformationTableViewController: UITableViewController {
     }
     
     fileprivate func getInformations() {
-        informationViewModel.getInformations()
+        informationViewModel
+            .getInformations()
             .subscribe { event in
                 switch event {
                 case .next(let information):

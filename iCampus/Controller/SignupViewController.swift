@@ -68,7 +68,8 @@ class SignupViewController: UIViewController {
     }
     
     fileprivate func signup() {
-        memberViewModel.signup(userId: userIdTextField.text!, password: passwordTextField.text!.md5(), phone: phoneTextField.text!)
+        memberViewModel
+            .signup(userId: userIdTextField.text!, password: passwordTextField.text!.md5(), phone: phoneTextField.text!)
             .subscribe()
             .disposed(by: bag)
         self.dismiss(animated: true, completion: nil)

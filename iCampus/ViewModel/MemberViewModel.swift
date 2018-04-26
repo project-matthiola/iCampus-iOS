@@ -35,4 +35,14 @@ class MemberViewModel {
             .mapJSON()
             .mapObject(type: Member.self, key: "Member")
     }
+    
+    func updateMember(member: Member) -> Observable<Bool> {
+        return provider.rx.request(.updateMember(id: member.id, userId: member.userId, password: member.password, phone: member.phone, role: member.role, classId: member.classId, name: member.name))
+            .asObservable()
+            .filterSuccessfulStatusCodes()
+            .mapJSON()
+            .mapObject(type: Member.self)
+            .map { $0.id != nil }
+    }
+    
 }

@@ -15,7 +15,7 @@ let provider = MoyaProvider<iCampusApi>(manager: CustomAlamofireManeger.manager(
 enum iCampusApi {
     case getMember(id: Int)
     case addMember(userId: String, password: String, phone: String)
-    case updateMember(id: Int, userId: String, password: String, phone: String, role: String, classId: String, name: String)
+    case updateMember(id: Int, userId: String?, password: String?, phone: String?, role: String?, classId: String?, name: String?)
     case getInformation(id: String?)
     case login(userId: String)
 }
@@ -65,15 +65,14 @@ extension iCampusApi: TargetType {
                 ], encoding: JSONEncoding.default
             )
         case let .updateMember(_, userId, password, phone, role, classId, name):
-            return .requestParameters(parameters: [
-                "user_id": userId,
-                "password": password,
-                "phone": phone,
-                "role": role,
-                "class_id": classId,
-                "name": name
-                ], encoding: JSONEncoding.default
-            )
+            var params: [String: Any] = [:]
+            params["user_id"] = userId
+            params["password"] = password
+            params["phone"] = phone
+            params["role"] = role
+            params["class_id"] = classId
+            params["name"] = name
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         case let .login(userId):
             return .requestParameters(parameters: ["Member.user_id": userId], encoding: URLEncoding.queryString)
         }

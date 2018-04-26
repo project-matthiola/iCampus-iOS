@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
                 if #available(iOS 11.0, *) {
                     switch context.biometryType {
                     case .none:
-                        return
+                        break
                     case .touchID:
                         localizedReasonString = "使用 Touch ID 登录"
                     case .faceID:
@@ -55,7 +55,11 @@ class LoginViewController: UIViewController {
                     }
                 }
             } else {
-                prepareForLogin()
+                if let error = authError {
+                    HUD.flash(.labeledError(title: "错误", subtitle: error.localizedDescription), delay: 2.0)
+                } else {
+                    prepareForLogin()
+                }
             }
         }
     }
@@ -93,10 +97,11 @@ class LoginViewController: UIViewController {
         
         loginButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
-                self.memberViewModel.login(userId: self.userIdTextField.text!, password: self.passwordTextField.text!)
+                self.memberViewModel
+                    .login(userId: self.userIdTextField.text!, password: self.passwordTextField.text!)
                     .subscribe(onNext: { [unowned self] member in
                         if self.passwordTextField.text!.md5() == member.password {
-                            iCampusPersistence().saveId(member.id)
+                            iCampusPersistence().saveMember(member)
                             self.navigateToTabBarController()
                         } else {
                             HUD.flash(.labeledError(title: "错误", subtitle: "学号或密码错误"), delay: 2.0)
@@ -113,15 +118,5 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

@@ -7,32 +7,33 @@
 //
 
 import Foundation
+import ObjectMapper
 
-public protocol Persistence {
-    func saveId(_ id: Int)
-    func deleteId()
+protocol Persistence {
+    func saveMember(_ member: Member)
+    func deleteMember()
 }
 
 // swiftlint:disable type_name
-public class iCampusPersistence: Persistence {
+class iCampusPersistence: Persistence {
     
-    public func saveId(_ id: Int) {
-        deleteId()
-        UserDefaults.standard.set(id, forKey: "id")
+    func saveMember(_ member: Member) {
+        deleteMember()
+        UserDefaults.standard.set(member.toJSON(), forKey: "member")
         UserDefaults.standard.synchronize()
     }
     
-    public func deleteId() {
-        UserDefaults.standard.removeObject(forKey: "id")
+    func deleteMember() {
+        UserDefaults.standard.removeObject(forKey: "member")
     }
     
-    public func getId() -> Int? {
-        guard let id = UserDefaults.standard.object(forKey: "id") as? Int else { return nil }
-        return id
+    func getMember() -> Member? {
+        guard let JSON = UserDefaults.standard.object(forKey: "member") as? [String: Any] else { return nil }
+        return Mapper<Member>().map(JSON: JSON)
     }
     
-    public func isLogin() -> Bool {
-        return UserDefaults.standard.object(forKey: "id") as? Int != nil
+    func isLogin() -> Bool {
+        return UserDefaults.standard.object(forKey: "member") != nil
     }
     
 }

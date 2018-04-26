@@ -16,17 +16,16 @@ class MineTableViewController: UITableViewController {
     @IBOutlet weak var userIdLabel: UILabel!
     
     private let bag = DisposeBag()
-    private let memberViewModel = MemberViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if let id = iCampusPersistence().getId() {
-            memberViewModel.getMember(id: id)
-                .subscribe(onNext: { [unowned self] member in
-                    self.configureLabel(member.name ?? "未填写", member.userId!)
-                })
-                .disposed(by: bag)
+        if let member = iCampusPersistence().getMember() {
+            self.configureLabel(member.name ?? "未填写", member.userId!)
         }
     }
     

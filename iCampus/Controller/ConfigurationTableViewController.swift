@@ -18,15 +18,15 @@ class ConfigurationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         logoutButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in self.showLogoutAlert() })
             .disposed(by: bag)
-        
     }
     
     fileprivate func logout() {
         guard iCampusPersistence().isLogin() else { return }
-        iCampusPersistence().deleteId()
+        iCampusPersistence().deleteMember()
         UIApplication.shared.delegate?.window??.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
     }
     
