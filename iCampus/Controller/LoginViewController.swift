@@ -29,9 +29,44 @@ class LoginViewController: UIViewController {
         loginButton.layer.masksToBounds = true
         
         let context = LAContext()
-        var error: NSError?
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {}
+        var authError: NSError?
+        var localizedReasonString: String?
         
+        if #available(iOS 8.0, macOS 10.12.1, *) {
+            if iCampusPersistence().isLogin(), context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+                if #available(iOS 11.0, *) {
+                    switch context.biometryType {
+                    case .none:
+                        return
+                    case .touchID:
+                        localizedReasonString = "使用 Touch ID 登录"
+                    case .faceID:
+                        localizedReasonString = "使用 Face ID 登录"
+                    }
+                } else {
+                    localizedReasonString = "使用 Touch ID 登录"
+                }
+                
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: localizedReasonString ?? "") { [unowned self] success, error in
+                    if success {
+                        self.navigateToTabBarController()
+                    } else {
+                        HUD.flash(.labeledError(title: "错误", subtitle: error?.localizedDescription), delay: 2.0)
+                    }
+                }
+            } else {
+                prepareForLogin()
+            }
+        }
+    }
+    
+    fileprivate func navigateToTabBarController() {
+        DispatchQueue.main.async {
+            UIApplication.shared.delegate?.window??.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "iCampusTabBarController")
+        }
+    }
+    
+    fileprivate func prepareForLogin() {
         let userIdValidator = userIdTextField.rx.text
             .orEmpty
             .map { $0.count > 0 }
@@ -59,10 +94,10 @@ class LoginViewController: UIViewController {
         loginButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
                 self.memberViewModel.login(userId: self.userIdTextField.text!, password: self.passwordTextField.text!)
-                    .subscribe(onNext: { member in
+                    .subscribe(onNext: { [unowned self] member in
                         if self.passwordTextField.text!.md5() == member.password {
                             iCampusPersistence().saveId(member.id)
-                            UIApplication.shared.delegate?.window??.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "iCampusTabBarController")
+                            self.navigateToTabBarController()
                         } else {
                             HUD.flash(.labeledError(title: "错误", subtitle: "学号或密码错误"), delay: 2.0)
                         }
