@@ -14,18 +14,12 @@ import PKHUD
 
 class InformationTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
     var id: Int?
-    
-    override func awakeFromNib() {
-        informationView.layer.cornerRadius = 10.0
-        informationView.layer.masksToBounds = true
-    }
     
 }
 
