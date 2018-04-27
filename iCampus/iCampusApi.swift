@@ -18,6 +18,8 @@ enum iCampusApi {
     case updateMember(id: Int, userId: String?, password: String?, phone: String?, role: String?, classId: String?, name: String?)
     case getInformation(id: String?)
     case login(userId: String)
+    case getGrades(userId: String)
+    case getCourse(courseId: String)
 }
 
 extension iCampusApi: TargetType {
@@ -34,12 +36,16 @@ extension iCampusApi: TargetType {
             return "/Member/\(id)"
         case .getInformation(let id):
             return "/Information/\(id ?? "")"
+        case .getGrades:
+            return "/Grade"
+        case .getCourse:
+            return "/Course"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getMember, .getInformation, .login:
+        case .getMember, .getInformation, .login, .getGrades, .getCourse:
             return .get
         case .addMember:
             return .post
@@ -75,6 +81,10 @@ extension iCampusApi: TargetType {
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         case let .login(userId):
             return .requestParameters(parameters: ["Member.user_id": userId], encoding: URLEncoding.queryString)
+        case let .getGrades(userId):
+            return .requestParameters(parameters: ["Grade.user_id": userId], encoding: URLEncoding.queryString)
+        case let .getCourse(courseId):
+            return .requestParameters(parameters: ["Course.course_id": courseId], encoding: URLEncoding.queryString)
         }
     }
     

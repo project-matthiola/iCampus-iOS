@@ -25,6 +25,8 @@
 		9A375CFC20931760000A2446 /* EKEventStore+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CFB20931760000A2446 /* EKEventStore+Event.swift */; };
 		9A375CFE20936577000A2446 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CFD20936577000A2446 /* CardView.swift */; };
 		9A375D0020936AF2000A2446 /* GradeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CFF20936AF2000A2446 /* GradeTableViewController.swift */; };
+		9A375D06209375B7000A2446 /* GradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D05209375B7000A2446 /* GradeViewModel.swift */; };
+		9A375D082093769A000A2446 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D072093769A000A2446 /* Grade.swift */; };
 		9AD222BC2079FD38007A2D8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222BB2079FD38007A2D8C /* AppDelegate.swift */; };
 		9AD222C12079FD38007A2D8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD222BF2079FD38007A2D8C /* Main.storyboard */; };
 		9AD222C42079FD38007A2D8C /* iCampus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222C22079FD38007A2D8C /* iCampus.xcdatamodeld */; };
@@ -84,6 +86,8 @@
 		9A375CFB20931760000A2446 /* EKEventStore+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEventStore+Event.swift"; sourceTree = "<group>"; };
 		9A375CFD20936577000A2446 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9A375CFF20936AF2000A2446 /* GradeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeTableViewController.swift; sourceTree = "<group>"; };
+		9A375D05209375B7000A2446 /* GradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeViewModel.swift; sourceTree = "<group>"; };
+		9A375D072093769A000A2446 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		9AD222B82079FD38007A2D8C /* iCampus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCampus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD222BB2079FD38007A2D8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AD222C02079FD38007A2D8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 				9AD222FE2085B92B007A2D8C /* Information.swift */,
 				9A375CF12092CD50000A2446 /* News.swift */,
 				9A375CF52093018C000A2446 /* Request.swift */,
+				9A375D072093769A000A2446 /* Grade.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 			children = (
 				9AD222FA207DBFE4007A2D8C /* MemberViewModel.swift */,
 				9AD223052086180E007A2D8C /* InformationViewModel.swift */,
+				9A375D05209375B7000A2446 /* GradeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -606,6 +612,7 @@
 				9A375CF22092CD50000A2446 /* News.swift in Sources */,
 				9A375CE82090B862000A2446 /* iCampusError.swift in Sources */,
 				9A375CE0209059E6000A2446 /* iCampusPersistence.swift in Sources */,
+				9A375D06209375B7000A2446 /* GradeViewModel.swift in Sources */,
 				9AD222FD207DC0EE007A2D8C /* Observable+ObjectMapper.swift in Sources */,
 				9AD22312208874EA007A2D8C /* CustomAlamofireManager.swift in Sources */,
 				9A375CF82093019B000A2446 /* RequestTableViewController.swift in Sources */,
@@ -618,6 +625,7 @@
 				9A375CFE20936577000A2446 /* CardView.swift in Sources */,
 				9A375CFC20931760000A2446 /* EKEventStore+Event.swift in Sources */,
 				9A375CFA2093030A000A2446 /* InformationDetailViewController.swift in Sources */,
+				9A375D082093769A000A2446 /* Grade.swift in Sources */,
 				9AD222F2207D0174007A2D8C /* Member.swift in Sources */,
 				9AD222F5207DB278007A2D8C /* iCampusApi.swift in Sources */,
 				9A375CE420906B41000A2446 /* ConfigurationTableViewController.swift in Sources */,

@@ -35,7 +35,7 @@ class EditTableViewController: UITableViewController {
         
         if let member = iCampusPersistence().getMember() {
             saveButton.rx.tap
-                .flatMap { [unowned self] _ -> Observable<Bool> in
+                .flatMapLatest { [unowned self] _ -> Observable<Bool> in
                     switch self.index {
                     case 1:
                         member.name = self.editTextField.text

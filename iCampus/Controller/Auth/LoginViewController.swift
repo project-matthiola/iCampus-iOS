@@ -96,7 +96,7 @@ class LoginViewController: UIViewController {
             .disposed(by: bag)
         
         loginButton.rx.tap
-            .flatMap { [unowned self] _ in
+            .flatMapLatest { [unowned self] _ in
                 return self.memberViewModel.login(userId: self.userIdTextField.text!, password: self.passwordTextField.text!)
             }
             .subscribe(onNext: { [unowned self] member in

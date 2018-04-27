@@ -59,7 +59,7 @@ class SignupViewController: UIViewController {
             .disposed(by: bag)
         
         signupButton.rx.tap
-            .flatMap {
+            .flatMapLatest {
                 return self.memberViewModel.signup(userId: self.userIdTextField.text!, password: self.passwordTextField.text!.md5(), phone: self.phoneTextField.text!)
             }
             .subscribe(onNext: { [unowned self] _ in self.dismiss(animated: true, completion: nil) })
