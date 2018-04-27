@@ -96,20 +96,18 @@ class LoginViewController: UIViewController {
             .disposed(by: bag)
         
         loginButton.rx.tap
-            .subscribe(onNext: { [unowned self] _ in
-                self.memberViewModel
-                    .login(userId: self.userIdTextField.text!, password: self.passwordTextField.text!)
-                    .subscribe(onNext: { [unowned self] member in
-                        if self.passwordTextField.text!.md5() == member.password {
-                            iCampusPersistence().saveMember(member)
-                            self.navigateToTabBarController()
-                        } else {
-                            HUD.flash(.labeledError(title: "错误", subtitle: "学号或密码错误"), delay: 2.0)
-                        }
-                    }, onError: { _ in
-                        HUD.flash(.labeledError(title: "错误", subtitle: "学号或密码错误"), delay: 2.0)
-                    })
-                    .disposed(by: self.bag)
+            .flatMap { [unowned self] _ in
+                return self.memberViewModel.login(userId: self.userIdTextField.text!, password: self.passwordTextField.text!)
+            }
+            .subscribe(onNext: { [unowned self] member in
+                if self.passwordTextField.text!.md5() == member.password {
+                    iCampusPersistence().saveMember(member)
+                    self.navigateToTabBarController()
+                } else {
+                    HUD.flash(.labeledError(title: "错误", subtitle: "学号或密码错误"), delay: 2.0)
+                }
+            }, onError: { _ in
+                HUD.flash(.labeledError(title: "错误", subtitle: "学号或密码错误"), delay: 2.0)
             })
             .disposed(by: bag)
     }

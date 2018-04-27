@@ -35,7 +35,7 @@ class EditTableViewController: UITableViewController {
         
         if let member = iCampusPersistence().getMember() {
             saveButton.rx.tap
-                .do(onNext: { [unowned self] in
+                .flatMap { [unowned self] _ -> Observable<Bool> in
                     switch self.index {
                     case 1:
                         member.name = self.editTextField.text
@@ -44,16 +44,12 @@ class EditTableViewController: UITableViewController {
                     default:
                         break
                     }
-                })
-                .subscribe(onNext: { [unowned self] in
-                    self.memberViewModel
-                        .updateMember(member: member)
-                        .subscribe(onCompleted: { [unowned self] in
-                            iCampusPersistence().saveMember(member)
-                            self.editTextField.resignFirstResponder()
-                            self.navigationController?.popViewController(animated: true)
-                        })
-                        .disposed(by: self.bag)
+                    return self.memberViewModel.updateMember(member: member)
+                }
+                .subscribe(onNext: { [unowned self] _ in
+                    iCampusPersistence().saveMember(member)
+                    self.editTextField.resignFirstResponder()
+                    self.navigationController?.popViewController(animated: true)
                 })
                 .disposed(by: bag)
         }

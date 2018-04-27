@@ -25,7 +25,7 @@ class Request: Mappable {
     func mapping(map: Map) {
         id <- map["id"]
         requestType <- map["request_type"]
-        requestTime <- map["request_time"]
+        requestTime <- (map["request_time"], CustomDateTransform())
         text <- map["text"]
         status <- map["status"]
         userId <- map["user_id"]

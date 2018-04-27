@@ -46,6 +46,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     
+    // 3D Touch
+    private enum ShortcutItemType: String {
+        case news
+        case activity
+        case grade
+        case request
+        
+        init?(shortcutItem: UIApplicationShortcutItem) {
+            guard let last = shortcutItem.type.components(separatedBy: ".").last else { return nil }
+            self.init(rawValue: last)
+        }
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        guard let itemType = ShortcutItemType(shortcutItem: shortcutItem) else {
+            completionHandler(false)
+            return
+        }
+        
+        if let tabBarController = self.window?.rootViewController as? UITabBarController {
+            switch itemType {
+            case .news:
+                tabBarController.selectedIndex = 0
+            case .activity:
+                tabBarController.selectedIndex = 1
+            case .grade:
+                tabBarController.selectedIndex = 2
+            case .request:
+                tabBarController.selectedIndex = 2
+            }
+        }
+    }
+    
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {

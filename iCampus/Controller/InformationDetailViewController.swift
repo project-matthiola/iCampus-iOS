@@ -43,7 +43,7 @@ class InformationDetailViewController: UIViewController {
         let eventStore = EKEventStore()
         eventStore.requestAccess(to: .event) { granted, error in
             if granted {
-                eventStore.addEvent()
+                eventStore.addEvent(title: "test", startDate: Date(), endDate: Date())
             } else {
                 HUD.flash(.labeledError(title: "错误", subtitle: error?.localizedDescription), delay: 2.0)
             }
