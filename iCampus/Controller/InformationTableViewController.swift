@@ -14,10 +14,18 @@ import PKHUD
 
 class InformationTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    
+    var id: Int?
+    
+    override func awakeFromNib() {
+        informationView.layer.cornerRadius = 10.0
+        informationView.layer.masksToBounds = true
+    }
     
 }
 
@@ -35,12 +43,12 @@ class InformationTableViewController: UITableViewController {
         let refreshControl = self.refreshControl!
         
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfInformation>(configureCell: { (_, tv, ip, item) in
-            // swiftlint:disable force_cast
             let cell = tv.dequeueReusableCell(withIdentifier: "InformationTableViewCell", for: ip) as! InformationTableViewCell
             cell.titleLabel.text = item.title
             cell.sourceLabel.text = item.source
             cell.timeLabel.text = CustomDateTransform().transformToJSON(item.informationTime)
             cell.locationLabel.text = item.place
+            cell.id = item.id
             return cell
         })
         
@@ -79,7 +87,15 @@ class InformationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64.0
+        return 118.0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let button = sender as? UIButton, let cell = button.superview?.superview?.superview as? InformationTableViewCell {
+            let informationDetailViewController = segue.destination as! InformationDetailViewController
+            informationDetailViewController.informationId = cell.id
+            informationDetailViewController.navigationItem.title = cell.titleLabel.text
+        }
     }
     
 }

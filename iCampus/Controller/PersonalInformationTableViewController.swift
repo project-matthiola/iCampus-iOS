@@ -41,19 +41,10 @@ class PersonalInformationTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? UITableViewCell {
-            // swiftlint:disable force_cast
             let editTableViewController = segue.destination as! EditTableViewController
             editTableViewController.editText = cell.detailTextLabel?.text
-            switch segue.identifier {
-            case "EditNameSegue":
-                editTableViewController.index = tableView.indexPathForSelectedRow?.row
-                editTableViewController.navigationItem.title = "修改姓名"
-            case "EditClassIdSegue":
-                editTableViewController.index = 3
-                editTableViewController.navigationItem.title = "修改班级"
-            default:
-                break
-            }
+            editTableViewController.index = tableView.indexPathForSelectedRow?.row
+            editTableViewController.navigationItem.title = "修改\(cell.textLabel?.text ?? "")"
         }
     }
     

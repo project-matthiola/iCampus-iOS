@@ -18,6 +18,11 @@
 		9A375CEA2090BCCC000A2446 /* PersonalInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CE92090BCCC000A2446 /* PersonalInformationTableViewController.swift */; };
 		9A375CEC2091C525000A2446 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CEB2091C525000A2446 /* EditTableViewController.swift */; };
 		9A375CF0209216F4000A2446 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CEF209216F4000A2446 /* NewsTableViewController.swift */; };
+		9A375CF22092CD50000A2446 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CF12092CD50000A2446 /* News.swift */; };
+		9A375CF62093018C000A2446 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CF52093018C000A2446 /* Request.swift */; };
+		9A375CF82093019B000A2446 /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CF72093019B000A2446 /* RequestTableViewController.swift */; };
+		9A375CFA2093030A000A2446 /* InformationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CF92093030A000A2446 /* InformationDetailViewController.swift */; };
+		9A375CFC20931760000A2446 /* EKEventStore+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375CFB20931760000A2446 /* EKEventStore+Event.swift */; };
 		9AD222BC2079FD38007A2D8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222BB2079FD38007A2D8C /* AppDelegate.swift */; };
 		9AD222C12079FD38007A2D8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD222BF2079FD38007A2D8C /* Main.storyboard */; };
 		9AD222C42079FD38007A2D8C /* iCampus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222C22079FD38007A2D8C /* iCampus.xcdatamodeld */; };
@@ -70,6 +75,11 @@
 		9A375CE92090BCCC000A2446 /* PersonalInformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationTableViewController.swift; sourceTree = "<group>"; };
 		9A375CEB2091C525000A2446 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
 		9A375CEF209216F4000A2446 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		9A375CF12092CD50000A2446 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		9A375CF52093018C000A2446 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		9A375CF72093019B000A2446 /* RequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
+		9A375CF92093030A000A2446 /* InformationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationDetailViewController.swift; sourceTree = "<group>"; };
+		9A375CFB20931760000A2446 /* EKEventStore+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEventStore+Event.swift"; sourceTree = "<group>"; };
 		9AD222B82079FD38007A2D8C /* iCampus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCampus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD222BB2079FD38007A2D8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AD222C02079FD38007A2D8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -205,6 +215,8 @@
 			children = (
 				9AD222F1207D0174007A2D8C /* Member.swift */,
 				9AD222FE2085B92B007A2D8C /* Information.swift */,
+				9A375CF12092CD50000A2446 /* News.swift */,
+				9A375CF52093018C000A2446 /* Request.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,14 +231,16 @@
 		9AD222EF207B3870007A2D8C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9AD22303208617FD007A2D8C /* InformationTableViewController.swift */,
-				9A375CDB208F87AE000A2446 /* LoginViewController.swift */,
 				9A375CDD208F87D1000A2446 /* SignupViewController.swift */,
+				9A375CDB208F87AE000A2446 /* LoginViewController.swift */,
+				9A375CEF209216F4000A2446 /* NewsTableViewController.swift */,
+				9AD22303208617FD007A2D8C /* InformationTableViewController.swift */,
+				9A375CF92093030A000A2446 /* InformationDetailViewController.swift */,
 				9A375CE120906142000A2446 /* MineTableViewController.swift */,
-				9A375CE320906B41000A2446 /* ConfigurationTableViewController.swift */,
 				9A375CE92090BCCC000A2446 /* PersonalInformationTableViewController.swift */,
 				9A375CEB2091C525000A2446 /* EditTableViewController.swift */,
-				9A375CEF209216F4000A2446 /* NewsTableViewController.swift */,
+				9A375CF72093019B000A2446 /* RequestTableViewController.swift */,
+				9A375CE320906B41000A2446 /* ConfigurationTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,6 +250,7 @@
 			children = (
 				9AD222FC207DC0EE007A2D8C /* Observable+ObjectMapper.swift */,
 				9A375CE52090B668000A2446 /* UIColor+Hex.swift */,
+				9A375CFB20931760000A2446 /* EKEventStore+Event.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -548,16 +563,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A375CDC208F87AE000A2446 /* LoginViewController.swift in Sources */,
+				9A375CF62093018C000A2446 /* Request.swift in Sources */,
+				9A375CF22092CD50000A2446 /* News.swift in Sources */,
 				9A375CE82090B862000A2446 /* iCampusError.swift in Sources */,
 				9A375CE0209059E6000A2446 /* iCampusPersistence.swift in Sources */,
 				9AD222FD207DC0EE007A2D8C /* Observable+ObjectMapper.swift in Sources */,
 				9AD22312208874EA007A2D8C /* CustomAlamofireManager.swift in Sources */,
+				9A375CF82093019B000A2446 /* RequestTableViewController.swift in Sources */,
 				9AD22304208617FD007A2D8C /* InformationTableViewController.swift in Sources */,
 				9AD223022085C706007A2D8C /* RequestAlertPlugin.swift in Sources */,
 				9AD222FF2085B92B007A2D8C /* Information.swift in Sources */,
 				9A375CEA2090BCCC000A2446 /* PersonalInformationTableViewController.swift in Sources */,
 				9AD222BC2079FD38007A2D8C /* AppDelegate.swift in Sources */,
 				9AD222FB207DBFE4007A2D8C /* MemberViewModel.swift in Sources */,
+				9A375CFC20931760000A2446 /* EKEventStore+Event.swift in Sources */,
+				9A375CFA2093030A000A2446 /* InformationDetailViewController.swift in Sources */,
 				9AD222F2207D0174007A2D8C /* Member.swift in Sources */,
 				9AD222F5207DB278007A2D8C /* iCampusApi.swift in Sources */,
 				9A375CE420906B41000A2446 /* ConfigurationTableViewController.swift in Sources */,

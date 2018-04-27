@@ -28,7 +28,7 @@ class EditTableViewController: UITableViewController {
         editTextField.becomeFirstResponder()
         editTextField.rx.text
             .orEmpty
-            .map { [unowned self] in $0.count > 0 && $0 != self.editText}
+            .map { [unowned self] in $0.count > 0 && $0 != self.editText }
             .share(replay: 1)
             .bind(to: saveButton.rx.isEnabled)
             .disposed(by: bag)
@@ -50,6 +50,7 @@ class EditTableViewController: UITableViewController {
                         .updateMember(member: member)
                         .subscribe(onCompleted: { [unowned self] in
                             iCampusPersistence().saveMember(member)
+                            self.editTextField.resignFirstResponder()
                             self.navigationController?.popViewController(animated: true)
                         })
                         .disposed(by: self.bag)

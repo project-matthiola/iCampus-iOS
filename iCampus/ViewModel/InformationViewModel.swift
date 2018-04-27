@@ -19,4 +19,12 @@ class InformationViewModel {
             .mapArray(type: Information.self, key: "Information")
     }
     
+    func getInformation(by id: Int) -> Observable<Information> {
+        return provider.rx.request(.getInformation(id: String(id)))
+            .asObservable()
+            .filterSuccessfulStatusCodes()
+            .mapJSON()
+            .mapObject(type: Information.self)
+    }
+    
 }

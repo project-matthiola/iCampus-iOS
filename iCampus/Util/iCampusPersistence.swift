@@ -1,5 +1,5 @@
 //
-//  Persistence.swift
+//  iCampusPersistence.swift
 //  iCampus
 //
 //  Created by Yuchen Cheng on 2018/4/25.
