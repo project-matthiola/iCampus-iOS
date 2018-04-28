@@ -29,6 +29,8 @@ class NewsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.dataSource = nil
+        self.refreshControl = UIRefreshControl()
+        let refreshControl = self.refreshControl!
         
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfNews>(configureCell: { (_, tv, ip, item) in
             let cell = tv.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: ip) as! NewsTableViewCell
@@ -41,6 +43,16 @@ class NewsTableViewController: UITableViewController {
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: bag)
         
+        getNews()
+        refreshControl.rx.controlEvent(.valueChanged)
+            .subscribe { [unowned self] _ in
+                self.getNews()
+                refreshControl.endRefreshing()
+            }
+            .disposed(by: bag)
+    }
+    
+    fileprivate func getNews() {
         newsViewModel
             .getNews()
             .subscribe(onNext: { self.sections.accept([SectionOfNews(items: $0)]) })
@@ -50,6 +62,10 @@ class NewsTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 78.0
     }
 
 }

@@ -31,7 +31,6 @@
 		9A375D0C2094043F000A2446 /* RequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D0B2094043F000A2446 /* RequestViewModel.swift */; };
 		9AD222BC2079FD38007A2D8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222BB2079FD38007A2D8C /* AppDelegate.swift */; };
 		9AD222C12079FD38007A2D8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD222BF2079FD38007A2D8C /* Main.storyboard */; };
-		9AD222C42079FD38007A2D8C /* iCampus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222C22079FD38007A2D8C /* iCampus.xcdatamodeld */; };
 		9AD222C62079FD39007A2D8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD222C52079FD39007A2D8C /* Assets.xcassets */; };
 		9AD222C92079FD39007A2D8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD222C72079FD39007A2D8C /* LaunchScreen.storyboard */; };
 		9AD222D42079FD39007A2D8C /* iCampusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222D32079FD39007A2D8C /* iCampusTests.swift */; };
@@ -95,7 +94,6 @@
 		9AD222B82079FD38007A2D8C /* iCampus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCampus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD222BB2079FD38007A2D8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AD222C02079FD38007A2D8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9AD222C32079FD38007A2D8C /* iCampus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iCampus.xcdatamodel; sourceTree = "<group>"; };
 		9AD222C52079FD39007A2D8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9AD222C82079FD39007A2D8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9AD222CA2079FD39007A2D8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 				9AD222C52079FD39007A2D8C /* Assets.xcassets */,
 				9AD222C72079FD39007A2D8C /* LaunchScreen.storyboard */,
 				9AD222CA2079FD39007A2D8C /* Info.plist */,
-				9AD222C22079FD38007A2D8C /* iCampus.xcdatamodeld */,
 			);
 			path = iCampus;
 			sourceTree = "<group>";
@@ -564,9 +561,12 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -577,9 +577,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,7 +646,6 @@
 				9A375CEC2091C525000A2446 /* EditTableViewController.swift in Sources */,
 				9A375CE220906142000A2446 /* MineTableViewController.swift in Sources */,
 				9A375CDE208F87D1000A2446 /* SignupViewController.swift in Sources */,
-				9AD222C42079FD38007A2D8C /* iCampus.xcdatamodeld in Sources */,
 				9AD223062086180E007A2D8C /* InformationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -821,10 +823,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampus/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -840,10 +839,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampus/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -860,11 +856,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampusTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -882,11 +874,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampusTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -903,11 +891,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampusUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampusUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -924,11 +908,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA2YZKB5GB;
 				INFOPLIST_FILE = iCampusUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rudeigerc.iCampusUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -977,19 +957,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9AD222C22079FD38007A2D8C /* iCampus.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9AD222C32079FD38007A2D8C /* iCampus.xcdatamodel */,
-			);
-			currentVersion = 9AD222C32079FD38007A2D8C /* iCampus.xcdatamodel */;
-			path = iCampus.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9AD222B02079FD38007A2D8C /* Project object */;
 }

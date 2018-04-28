@@ -24,7 +24,7 @@ class News: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        newsTime <- map["news_time"]
+        newsTime <- (map["news_time"], CustomDateTransform())
         title <- map["title"]
         author <- map["author"]
         text <- map["text"]

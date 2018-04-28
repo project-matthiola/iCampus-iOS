@@ -10,6 +10,8 @@ target 'iCampus' do
   pod 'RxCocoa'
   pod 'RxDataSources'
   pod 'Moya/RxSwift'
+  pod 'RxRealm'
+  pod 'RealmSwift'
   pod 'ObjectMapper'
   pod 'PKHUD', '~> 5.0'
   pod 'CryptoSwift'
