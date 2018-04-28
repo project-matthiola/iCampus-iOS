@@ -8,6 +8,17 @@
 
 import Foundation
 import ObjectMapper
+import RxDataSources
+
+private enum RequestType {
+    case scholar
+    case leave
+    
+    init?(_ requestType: String) {
+        guard let last = requestType.components(separatedBy: "_").last else { return nil }
+        self.init(last)
+    }
+}
 
 class Request: Mappable {
     
@@ -31,4 +42,15 @@ class Request: Mappable {
         userId <- map["user_id"]
     }
     
+}
+
+struct SectionOfRequest {
+    var items: [Request]
+}
+
+extension SectionOfRequest: SectionModelType {
+    init(original: SectionOfRequest, items: [Request]) {
+        self = original
+        self.items = items
+    }
 }

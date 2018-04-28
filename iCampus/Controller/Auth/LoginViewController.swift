@@ -96,10 +96,14 @@ class LoginViewController: UIViewController {
             .disposed(by: bag)
         
         loginButton.rx.tap
+            .do(onNext: {
+                HUD.show(.labeledProgress(title: "登录中", subtitle: nil))
+            })
             .flatMapLatest { [unowned self] _ in
                 return self.memberViewModel.login(userId: self.userIdTextField.text!, password: self.passwordTextField.text!)
             }
             .subscribe(onNext: { [unowned self] member in
+                HUD.hide()
                 if self.passwordTextField.text!.md5() == member.password {
                     iCampusPersistence().saveMember(member)
                     self.navigateToTabBarController()

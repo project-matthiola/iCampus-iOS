@@ -36,6 +36,18 @@ class GradeTableViewController: UITableViewController {
             cell.courseIdLabel.text = item.courseId
             cell.courseNameLabel.text = item.courseName
             cell.scoreLabel.text = String(item.score ?? 0)
+            
+            switch item.score! {
+            case 0..<60:
+                cell.scoreLabel.textColor = .red
+            case 60..<85:
+                cell.scoreLabel.textColor = .yellow
+            case 85...100:
+                cell.scoreLabel.textColor = .green
+            default:
+                cell.scoreLabel.textColor = UIColor(hex6: 0xD0021B)
+            }
+            
             return cell
         })
         

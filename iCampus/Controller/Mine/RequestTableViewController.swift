@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
+import PKHUD
+
+class RequestTableViewCell: UITableViewCell {
+    
+}
 
 class RequestTableViewController: UITableViewController {
 
+    private let bag = DisposeBag()
+    private let requestViewModel = RequestViewModel()
+    private var sections = BehaviorRelay<[SectionOfRequest]>(value: [])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

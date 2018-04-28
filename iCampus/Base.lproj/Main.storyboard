@@ -280,7 +280,7 @@
         <!--设置-->
         <scene sceneID="fRf-2e-TeB">
             <objects>
-                <tableViewController id="xcc-Yi-eSi" customClass="ConfigurationTableViewController" customModule="iCampus" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="xcc-Yi-eSi" customClass="ConfigurationTableViewController" customModule="iCampus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="QvH-Hj-3Oy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -478,7 +478,7 @@
         <!--我的申请-->
         <scene sceneID="G3E-u8-eD7">
             <objects>
-                <tableViewController id="6Xp-ud-u5l" customClass="RequestTableViewController" customModule="iCampus" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="6Xp-ud-u5l" customClass="RequestTableViewController" customModule="iCampus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f6J-IW-cQf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -877,15 +877,52 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0CP-VP-Wqv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableViewCell" id="5mc-NA-gIZ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableViewCell" rowHeight="115" id="5mc-NA-gIZ" customClass="NewsTableViewCell" customModule="iCampus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5mc-NA-gIZ" id="xd7-5x-z5A">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="114.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cte-hw-0vH" customClass="CardView" customModule="iCampus" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="16" width="343" height="99"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1970-01-01 00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT3-Jm-s7a">
+                                                    <rect key="frame" x="8" y="8" width="130" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07N-dI-8MZ">
+                                                    <rect key="frame" x="8" y="32" width="48" height="22"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="07N-dI-8MZ" firstAttribute="leading" secondItem="cte-hw-0vH" secondAttribute="leading" constant="8" id="12Q-TD-BQQ"/>
+                                                <constraint firstItem="07N-dI-8MZ" firstAttribute="top" secondItem="oT3-Jm-s7a" secondAttribute="bottom" constant="8" id="HGv-2x-9ix"/>
+                                                <constraint firstItem="oT3-Jm-s7a" firstAttribute="top" secondItem="cte-hw-0vH" secondAttribute="top" constant="8" id="Jsr-SA-QpE"/>
+                                                <constraint firstItem="oT3-Jm-s7a" firstAttribute="leading" secondItem="cte-hw-0vH" secondAttribute="leading" constant="8" id="g9h-uM-uYI"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="cte-hw-0vH" secondAttribute="trailing" constant="16" id="Mf7-K9-T8v"/>
+                                        <constraint firstAttribute="bottom" secondItem="cte-hw-0vH" secondAttribute="bottom" id="cc7-jH-XQH"/>
+                                        <constraint firstItem="cte-hw-0vH" firstAttribute="top" secondItem="xd7-5x-z5A" secondAttribute="top" constant="16" id="kIv-BF-J0b"/>
+                                        <constraint firstItem="cte-hw-0vH" firstAttribute="leading" secondItem="xd7-5x-z5A" secondAttribute="leading" constant="16" id="rkh-pU-eSE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="timeLabel" destination="oT3-Jm-s7a" id="F1Y-9o-amr"/>
+                                    <outlet property="titleLabel" destination="07N-dI-8MZ" id="cSu-wO-Br3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -897,7 +934,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9e-Yk-7cK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="-889"/>
+            <point key="canvasLocation" x="1544.8" y="-889.20539730134942"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="a6h-4y-FFt">

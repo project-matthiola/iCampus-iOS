@@ -20,6 +20,9 @@ enum iCampusApi {
     case login(userId: String)
     case getGrades(userId: String)
     case getCourse(courseId: String)
+    case getNews(id: String?)
+    case getRequest(id: String?)
+    case addRequest(requestType: String?, text: String?, userId: String)
 }
 
 extension iCampusApi: TargetType {
@@ -40,14 +43,20 @@ extension iCampusApi: TargetType {
             return "/Grade"
         case .getCourse:
             return "/Course"
+        case .getNews(let id):
+            return "/News/\(id ?? "")"
+        case .addRequest:
+            return "Request"
+        case .getRequest(let id):
+            return "/Request/\(id ?? "")"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getMember, .getInformation, .login, .getGrades, .getCourse:
+        case .getMember, .getInformation, .login, .getGrades, .getCourse, .getNews, .getRequest:
             return .get
-        case .addMember:
+        case .addMember, .addRequest:
             return .post
         case .updateMember:
             return .put
@@ -60,7 +69,7 @@ extension iCampusApi: TargetType {
     
     var task: Task {
         switch self {
-        case .getMember, .getInformation:
+        case .getMember, .getInformation, .getNews, .getRequest:
             return .requestPlain
         case let .addMember(userId, password, phone):
             return .requestParameters(parameters: [
@@ -85,6 +94,14 @@ extension iCampusApi: TargetType {
             return .requestParameters(parameters: ["Grade.user_id": userId], encoding: URLEncoding.queryString)
         case let .getCourse(courseId):
             return .requestParameters(parameters: ["Course.course_id": courseId], encoding: URLEncoding.queryString)
+        case let .addRequest(requestType, text, userId):
+            var params: [String: Any] = [:]
+            params["request_type"] = requestType
+            params["request_time"] = Date()
+            params["text"] = text
+            params["status"] = "STATUS"
+            params["user_id"] = userId
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         }
     }
     

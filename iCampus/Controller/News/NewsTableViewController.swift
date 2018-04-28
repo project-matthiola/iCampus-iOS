@@ -7,12 +7,44 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
+import PKHUD
+
+class NewsTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+}
 
 class NewsTableViewController: UITableViewController {
 
+    private let bag = DisposeBag()
+    private let newsViewModel = NewsViewModel()
+    private var sections = BehaviorRelay<[SectionOfNews]>(value: [])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.dataSource = nil
+        
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfNews>(configureCell: { (_, tv, ip, item) in
+            let cell = tv.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: ip) as! NewsTableViewCell
+            cell.titleLabel.text = item.title
+            cell.timeLabel.text = CustomDateTransform().transformToJSON(item.newsTime)
+            return cell
+        })
+        
+        sections.asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+        
+        newsViewModel
+            .getNews()
+            .subscribe(onNext: { self.sections.accept([SectionOfNews(items: $0)]) })
+            .disposed(by: bag)
     }
 
     override func didReceiveMemoryWarning() {
