@@ -62,16 +62,11 @@ class InformationTableViewController: UITableViewController {
     fileprivate func getInformations() {
         informationViewModel
             .getInformations()
-            .subscribe { event in
-                switch event {
-                case .next(let information):
-                    self.sections.accept([SectionOfInformation(items: information)])
-                case .error(let error):
-                    ErrorHandler().showErrorHUD(subtitle: error.localizedDescription)
-                case .completed:
-                    return
-                }
-            }
+            .subscribe(onNext: { [unowned self] information in
+                self.sections.accept([SectionOfInformation(items: information)])
+            }, onError: { error in
+                ErrorHandler().showErrorHUD(subtitle: error.localizedDescription)
+            })
             .disposed(by: bag)
     }
     

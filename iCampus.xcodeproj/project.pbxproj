@@ -29,6 +29,7 @@
 		9A375D082093769A000A2446 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D072093769A000A2446 /* Grade.swift */; };
 		9A375D0A2093FE8E000A2446 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D092093FE8E000A2446 /* NewsViewModel.swift */; };
 		9A375D0C2094043F000A2446 /* RequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D0B2094043F000A2446 /* RequestViewModel.swift */; };
+		9A375D102094ECEE000A2446 /* InformationReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D0F2094ECEE000A2446 /* InformationReminderTableViewController.swift */; };
 		9AD222BC2079FD38007A2D8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222BB2079FD38007A2D8C /* AppDelegate.swift */; };
 		9AD222C12079FD38007A2D8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD222BF2079FD38007A2D8C /* Main.storyboard */; };
 		9AD222C62079FD39007A2D8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD222C52079FD39007A2D8C /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 		9A375D072093769A000A2446 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		9A375D092093FE8E000A2446 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		9A375D0B2094043F000A2446 /* RequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewModel.swift; sourceTree = "<group>"; };
+		9A375D0F2094ECEE000A2446 /* InformationReminderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationReminderTableViewController.swift; sourceTree = "<group>"; };
 		9AD222B82079FD38007A2D8C /* iCampus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCampus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD222BB2079FD38007A2D8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AD222C02079FD38007A2D8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				9AD22303208617FD007A2D8C /* InformationTableViewController.swift */,
 				9A375CF92093030A000A2446 /* InformationDetailTableViewController.swift */,
+				9A375D0F2094ECEE000A2446 /* InformationReminderTableViewController.swift */,
 			);
 			path = Information;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				9A375CDC208F87AE000A2446 /* LoginViewController.swift in Sources */,
 				9A375CF62093018C000A2446 /* Request.swift in Sources */,
 				9A375D0020936AF2000A2446 /* GradeTableViewController.swift in Sources */,
+				9A375D102094ECEE000A2446 /* InformationReminderTableViewController.swift in Sources */,
 				9A375D0C2094043F000A2446 /* RequestViewModel.swift in Sources */,
 				9A375CF22092CD50000A2446 /* News.swift in Sources */,
 				9A375CE82090B862000A2446 /* iCampusError.swift in Sources */,

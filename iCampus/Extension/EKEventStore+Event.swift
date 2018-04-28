@@ -11,13 +11,13 @@ import EventKit
 import PKHUD
 
 protocol iCampusEvent {
-    func addEvent(title: String, source: String?, startDate: Date, endDate: Date, location: String?)
+    func addEvent(information: Information, alertTime: Date?)
     func cancelEvent()
 }
 
 extension EKEventStore: iCampusEvent {
     
-    func addEvent(title: String, source: String?, startDate: Date, endDate: Date, location: String?) {
+    func addEvent(information: Information, alertTime: Date?) {
         if let calendarIdentifier = UserDefaults.standard.object(forKey: "calendarIdentifier") as? String, self.calendar(withIdentifier: calendarIdentifier) == nil {
             UserDefaults.standard.removeObject(forKey: "calendarIdentifier")
         }
@@ -39,12 +39,18 @@ extension EKEventStore: iCampusEvent {
         if let calendarIdentifier = UserDefaults.standard.object(forKey: "calendarIdentifier") as? String, let calendar = self.calendar(withIdentifier: calendarIdentifier) {
             let event = EKEvent(eventStore: self)
             event.calendar = calendar
-            event.title = title
-            event.startDate = startDate
-            event.endDate = startDate.addingTimeInterval(TimeInterval(2 * 60 * 60))
-            event.addAlarm(EKAlarm(relativeOffset: TimeInterval(-30 * 60)))
-            event.location = location
-            event.notes = source
+            event.title = information.title
+            event.startDate = information.informationTime
+            event.endDate = information.informationTime!.addingTimeInterval(TimeInterval(2 * 60 * 60))
+            event.location = information.place
+            event.notes = information.source
+            
+            if alertTime != nil {
+                event.addAlarm(EKAlarm(absoluteDate: alertTime!))
+            } else {
+                event.addAlarm(EKAlarm(relativeOffset: TimeInterval(-30 * 60)))
+            }
+            
             do {
                 try self.save(event, span: .thisEvent, commit: true)
             } catch {

@@ -14,7 +14,6 @@ import PKHUD
 
 class InformationDetailTableViewController: UITableViewController {
 
-    @IBOutlet weak var calendarButton: UIBarButtonItem!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
@@ -25,15 +24,16 @@ class InformationDetailTableViewController: UITableViewController {
     private let informationViewModel = InformationViewModel()
     
     var informationId: Int?
+    var information: Information?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let information = informationViewModel
+
+        informationViewModel
             .getInformation(by: informationId!)
             .share(replay: 1)
-
-        information.subscribe(onNext: { information in
+            .subscribe(onNext: { information in
+                self.information = information
                 self.titleLabel.text = information.title
                 self.timeLabel.text = CustomDateTransform().transformToJSON(information.informationTime)
                 self.placeLabel.text = information.place
@@ -53,27 +53,20 @@ class InformationDetailTableViewController: UITableViewController {
                 self.tableView.endUpdates()
             })
             .disposed(by: bag)
-        
-        calendarButton.rx.tap
-            .flatMapLatest { return information }
-            .subscribe(onNext: { [unowned self] in self.addEvent($0) })
-            .disposed(by: bag)
-    }
-
-    fileprivate func addEvent(_ information: Information) {
-        let eventStore = EKEventStore()
-        eventStore.requestAccess(to: .event) { granted, error in
-            if granted {
-                eventStore.addEvent(title: information.title!, source: information.source, startDate: information.informationTime!, endDate: information.informationTime!, location: information.place)
-            } else {
-                ErrorHandler().showErrorHUD(subtitle: error?.localizedDescription)
-            }
-        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override var previewActionItems: [UIPreviewActionItem] {
+        return []
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let informationReminderTableViewController = segue.destination as! InformationReminderTableViewController
+        informationReminderTableViewController.information = self.information
     }
     
 }

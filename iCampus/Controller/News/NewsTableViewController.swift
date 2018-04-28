@@ -55,7 +55,11 @@ class NewsTableViewController: UITableViewController {
     fileprivate func getNews() {
         newsViewModel
             .getNews()
-            .subscribe(onNext: { self.sections.accept([SectionOfNews(items: $0)]) })
+            .subscribe(onNext: {
+                self.sections.accept([SectionOfNews(items: $0)])
+            }, onError: { error in
+                ErrorHandler().showErrorHUD(subtitle: error.localizedDescription)
+            })
             .disposed(by: bag)
     }
 
