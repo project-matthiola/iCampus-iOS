@@ -55,11 +55,7 @@ class LoginViewController: UIViewController {
                     }
                 }
             } else {
-                if let error = authError {
-                    HUD.flash(.labeledError(title: "错误", subtitle: error.localizedDescription), delay: 2.0)
-                } else {
-                    prepareForLogin()
-                }
+                prepareForLogin()
             }
         }
     }

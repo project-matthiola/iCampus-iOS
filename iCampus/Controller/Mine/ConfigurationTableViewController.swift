@@ -12,6 +12,7 @@ import RxCocoa
 
 class ConfigurationTableViewController: UITableViewController {
     
+    @IBOutlet weak var touchIdSwitch: UISwitch!
     @IBOutlet weak var logoutButton: UIButton!
     
     private let bag = DisposeBag()
