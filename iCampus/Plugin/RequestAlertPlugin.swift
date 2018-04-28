@@ -23,12 +23,12 @@ final class RequestAlertPlugin: PluginType {
             let statusCode = response.statusCode
             switch statusCode {
             case 202:
-                HUD.flash(.labeledError(title: "错误", subtitle: "请求资源不存在"), delay: 2.0)
+                ErrorHandler().showErrorHUD(subtitle: "请求资源不存在")
             default:
                 break
             }
         case let .failure(error):
-            HUD.flash(.labeledError(title: "错误", subtitle: error.errorDescription), delay: 2.0)
+            ErrorHandler().showErrorHUD(subtitle: error.localizedDescription)
         }
     }
     

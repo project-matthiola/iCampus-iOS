@@ -62,11 +62,11 @@ class SignupViewController: UIViewController {
             .flatMapLatest {
                 return self.memberViewModel.signup(userId: self.userIdTextField.text!, password: self.passwordTextField.text!.md5(), phone: self.phoneTextField.text!)
             }
-            .subscribe(onNext: { [unowned self] _ in self.dismiss(animated: true, completion: nil) })
+            .bind { [unowned self] _ in self.dismiss(animated: true, completion: nil) }
             .disposed(by: bag)
         
         backButton.rx.tap
-            .subscribe(onNext: { [unowned self] _ in self.dismiss(animated: true, completion: nil) })
+            .bind { [unowned self] _ in self.dismiss(animated: true, completion: nil) }
             .disposed(by: bag)
     }
     

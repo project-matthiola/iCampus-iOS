@@ -11,13 +11,13 @@ import EventKit
 import PKHUD
 
 protocol iCampusEvent {
-    func addEvent(title: String, startDate: Date, endDate: Date)
+    func addEvent(title: String, source: String?, startDate: Date, endDate: Date, location: String?)
     func cancelEvent()
 }
 
 extension EKEventStore: iCampusEvent {
     
-    func addEvent(title: String, startDate: Date, endDate: Date) {
+    func addEvent(title: String, source: String?, startDate: Date, endDate: Date, location: String?) {
         if let calendarIdentifier = UserDefaults.standard.object(forKey: "calendarIdentifier") as? String, self.calendar(withIdentifier: calendarIdentifier) == nil {
             UserDefaults.standard.removeObject(forKey: "calendarIdentifier")
         }
@@ -32,7 +32,7 @@ extension EKEventStore: iCampusEvent {
                 UserDefaults.standard.set(calender.calendarIdentifier, forKey: "calendarIdentifier")
                 UserDefaults.standard.synchronize()
             } catch {
-                HUD.flash(.labeledError(title: "错误", subtitle: error.localizedDescription), delay: 2.0)
+                ErrorHandler().showErrorHUD(subtitle: error.localizedDescription)
             }
         }
         
@@ -43,16 +43,18 @@ extension EKEventStore: iCampusEvent {
             event.startDate = startDate
             event.endDate = startDate.addingTimeInterval(TimeInterval(2 * 60 * 60))
             event.addAlarm(EKAlarm(relativeOffset: TimeInterval(-30 * 60)))
+            event.location = location
+            event.notes = source
             do {
                 try self.save(event, span: .thisEvent, commit: true)
             } catch {
-                HUD.flash(.labeledError(title: "错误", subtitle: error.localizedDescription), delay: 2.0)
+                ErrorHandler().showErrorHUD(subtitle: error.localizedDescription)
             }
         }
     }
     
     func cancelEvent() {
-        
+        return
     }
     
 }

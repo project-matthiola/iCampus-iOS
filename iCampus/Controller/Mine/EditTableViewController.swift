@@ -46,11 +46,11 @@ class EditTableViewController: UITableViewController {
                     }
                     return self.memberViewModel.updateMember(member: member)
                 }
-                .subscribe(onNext: { [unowned self] _ in
+                .bind { [unowned self] _ in
                     iCampusPersistence().saveMember(member)
                     self.editTextField.resignFirstResponder()
                     self.navigationController?.popViewController(animated: true)
-                })
+                }
                 .disposed(by: bag)
         }
     }

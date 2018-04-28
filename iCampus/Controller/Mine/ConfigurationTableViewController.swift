@@ -21,7 +21,7 @@ class ConfigurationTableViewController: UITableViewController {
         super.viewDidLoad()
         
         logoutButton.rx.tap
-            .subscribe(onNext: { [unowned self] _ in self.showLogoutAlert() })
+            .bind { [unowned self] _ in self.showLogoutAlert() }
             .disposed(by: bag)
     }
     

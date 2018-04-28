@@ -67,7 +67,7 @@ class InformationTableViewController: UITableViewController {
                 case .next(let information):
                     self.sections.accept([SectionOfInformation(items: information)])
                 case .error(let error):
-                    HUD.flash(.labeledError(title: "错误", subtitle: error.localizedDescription), delay: 2.0)
+                    ErrorHandler().showErrorHUD(subtitle: error.localizedDescription)
                 case .completed:
                     return
                 }
@@ -86,9 +86,9 @@ class InformationTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let button = sender as? UIButton, let cell = button.superview?.superview?.superview as? InformationTableViewCell {
-            let informationDetailViewController = segue.destination as! InformationDetailViewController
-            informationDetailViewController.informationId = cell.id
-            informationDetailViewController.navigationItem.title = cell.titleLabel.text
+            let informationDetailTableViewController = segue.destination as! InformationDetailTableViewController
+            informationDetailTableViewController.informationId = cell.id
+            informationDetailTableViewController.navigationItem.title = cell.titleLabel.text
         }
     }
     

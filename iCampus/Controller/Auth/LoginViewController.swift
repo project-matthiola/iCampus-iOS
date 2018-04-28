@@ -51,10 +51,14 @@ class LoginViewController: UIViewController {
                     if success {
                         self.navigateToTabBarController()
                     } else {
-                        HUD.flash(.labeledError(title: "错误", subtitle: error?.localizedDescription), delay: 2.0)
+                        ErrorHandler().showErrorHUD(subtitle: error?.localizedDescription)
+                        self.prepareForLogin()
                     }
                 }
             } else {
+                if let error = authError {
+                    ErrorHandler().showErrorHUD(subtitle: error.localizedDescription)
+                }
                 prepareForLogin()
             }
         }
@@ -104,10 +108,10 @@ class LoginViewController: UIViewController {
                     iCampusPersistence().saveMember(member)
                     self.navigateToTabBarController()
                 } else {
-                    HUD.flash(.labeledError(title: "错误", subtitle: "学号或密码错误"), delay: 2.0)
+                    ErrorHandler().showErrorHUD(subtitle: "学号或密码错误")
                 }
             }, onError: { _ in
-                HUD.flash(.labeledError(title: "错误", subtitle: "学号或密码错误"), delay: 2.0)
+                ErrorHandler().showErrorHUD(subtitle: "学号或密码错误")
             })
             .disposed(by: bag)
     }
