@@ -1,3 +1,5 @@
 language: objective-c
 xcode_workspace: iCampus.xcworkspace # path to your xcodeproj folder
 xcode_scheme: iCampusTests
+before_install:
+  - gem install cocoapods
