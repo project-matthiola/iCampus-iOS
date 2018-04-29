@@ -16,6 +16,7 @@ class NewsViewModel {
             .asObservable()
             .filterSuccessfulStatusCodes()
             .mapJSON()
+            .catchErrorJustReturn([])
             .mapArray(type: News.self, key: "News")
     }
     

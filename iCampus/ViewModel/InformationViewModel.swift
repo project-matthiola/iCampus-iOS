@@ -16,6 +16,7 @@ class InformationViewModel {
             .asObservable()
             .filterSuccessfulStatusCodes()
             .mapJSON()
+            .catchErrorJustReturn([])
             .mapArray(type: Information.self, key: "Information")
     }
     

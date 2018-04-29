@@ -16,6 +16,7 @@ class GradeViewModel {
             .asObservable()
             .filterSuccessfulStatusCodes()
             .mapJSON()
+            .catchErrorJustReturn([])
             .mapArray(type: Grade.self, key: "Grade")
     }
     

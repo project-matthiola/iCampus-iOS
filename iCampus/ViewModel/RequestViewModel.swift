@@ -16,6 +16,7 @@ class RequestViewModel {
             .asObservable()
             .filterSuccessfulStatusCodes()
             .mapJSON()
+            .catchErrorJustReturn([])
             .mapArray(type: Request.self, key: "Request")
     }
     
