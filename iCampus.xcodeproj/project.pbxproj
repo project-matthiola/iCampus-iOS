@@ -33,6 +33,7 @@
 		9A375D1220958B85000A2446 /* RequestTypeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D1120958B85000A2446 /* RequestTypeTransform.swift */; };
 		9A375D142095A9A8000A2446 /* NewsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D132095A9A8000A2446 /* NewsDetailTableViewController.swift */; };
 		9A375D162095B2DE000A2446 /* RequestStatusTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D152095B2DE000A2446 /* RequestStatusTransform.swift */; };
+		9A375D192095C761000A2446 /* AddRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A375D182095C761000A2446 /* AddRequestTableViewController.swift */; };
 		9AD222BC2079FD38007A2D8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD222BB2079FD38007A2D8C /* AppDelegate.swift */; };
 		9AD222C12079FD38007A2D8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AD222BF2079FD38007A2D8C /* Main.storyboard */; };
 		9AD222C62079FD39007A2D8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AD222C52079FD39007A2D8C /* Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		9A375D1120958B85000A2446 /* RequestTypeTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTypeTransform.swift; sourceTree = "<group>"; };
 		9A375D132095A9A8000A2446 /* NewsDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailTableViewController.swift; sourceTree = "<group>"; };
 		9A375D152095B2DE000A2446 /* RequestStatusTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStatusTransform.swift; sourceTree = "<group>"; };
+		9A375D182095C761000A2446 /* AddRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestTableViewController.swift; sourceTree = "<group>"; };
 		9AD222B82079FD38007A2D8C /* iCampus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCampus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD222BB2079FD38007A2D8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AD222C02079FD38007A2D8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				9A375CEB2091C525000A2446 /* EditTableViewController.swift */,
 				9A375CFF20936AF2000A2446 /* GradeTableViewController.swift */,
 				9A375CF72093019B000A2446 /* RequestTableViewController.swift */,
+				9A375D182095C761000A2446 /* AddRequestTableViewController.swift */,
 				9A375CE320906B41000A2446 /* ConfigurationTableViewController.swift */,
 			);
 			path = Mine;
@@ -281,11 +284,11 @@
 		9AD222EC207B3816007A2D8C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9AD222F1207D0174007A2D8C /* Member.swift */,
-				9AD222FE2085B92B007A2D8C /* Information.swift */,
 				9A375CF12092CD50000A2446 /* News.swift */,
-				9A375CF52093018C000A2446 /* Request.swift */,
+				9AD222FE2085B92B007A2D8C /* Information.swift */,
+				9AD222F1207D0174007A2D8C /* Member.swift */,
 				9A375D072093769A000A2446 /* Grade.swift */,
+				9A375CF52093018C000A2446 /* Request.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,10 +325,10 @@
 		9AD222F9207DBFAF007A2D8C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				9AD222FA207DBFE4007A2D8C /* MemberViewModel.swift */,
-				9AD223052086180E007A2D8C /* InformationViewModel.swift */,
-				9A375D05209375B7000A2446 /* GradeViewModel.swift */,
 				9A375D092093FE8E000A2446 /* NewsViewModel.swift */,
+				9AD223052086180E007A2D8C /* InformationViewModel.swift */,
+				9AD222FA207DBFE4007A2D8C /* MemberViewModel.swift */,
+				9A375D05209375B7000A2446 /* GradeViewModel.swift */,
 				9A375D0B2094043F000A2446 /* RequestViewModel.swift */,
 			);
 			path = ViewModel;
@@ -579,6 +582,7 @@
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/IKEventSource/IKEventSource.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
@@ -593,6 +597,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IKEventSource.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
@@ -651,6 +656,7 @@
 				9AD222FB207DBFE4007A2D8C /* MemberViewModel.swift in Sources */,
 				9A375CFE20936577000A2446 /* CardView.swift in Sources */,
 				9A375CFC20931760000A2446 /* EKEventStore+Event.swift in Sources */,
+				9A375D192095C761000A2446 /* AddRequestTableViewController.swift in Sources */,
 				9A375CFA2093030A000A2446 /* InformationDetailTableViewController.swift in Sources */,
 				9A375D082093769A000A2446 /* Grade.swift in Sources */,
 				9A375D142095A9A8000A2446 /* NewsDetailTableViewController.swift in Sources */,

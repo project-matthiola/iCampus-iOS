@@ -39,7 +39,8 @@ class InformationDetailTableViewController: UITableViewController {
                 self.placeLabel.text = information.place
                 self.sourceLabel.text = information.source
                 
-                if information.text == nil {
+                let mainText = information.text?.trimmingCharacters(in: .whitespaces)
+                if mainText == nil || mainText!.isEmpty {
                     self.mainTextView.backgroundColor = .none
                     if let cell = self.mainTextView.superview?.superview as? UITableViewCell {
                         cell.backgroundColor = .none

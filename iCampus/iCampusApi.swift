@@ -21,7 +21,7 @@ enum iCampusApi {
     case getGrades(userId: String)
     case getCourse(courseId: String)
     case getNews(id: String?)
-    case getRequest(id: String?)
+    case getRequests(userId: String)
     case addRequest(requestType: String?, text: String?, userId: String)
 }
 
@@ -45,16 +45,14 @@ extension iCampusApi: TargetType {
             return "/Course"
         case .getNews(let id):
             return "/News/\(id ?? "")"
-        case .addRequest:
+        case .addRequest, .getRequests:
             return "Request"
-        case .getRequest(let id):
-            return "/Request/\(id ?? "")"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getMember, .getInformation, .login, .getGrades, .getCourse, .getNews, .getRequest:
+        case .getMember, .getInformation, .login, .getGrades, .getCourse, .getNews, .getRequests:
             return .get
         case .addMember, .addRequest:
             return .post
@@ -69,7 +67,7 @@ extension iCampusApi: TargetType {
     
     var task: Task {
         switch self {
-        case .getMember, .getInformation, .getNews, .getRequest:
+        case .getMember, .getInformation, .getNews:
             return .requestPlain
         case let .addMember(userId, password, phone):
             return .requestParameters(parameters: [
@@ -94,10 +92,12 @@ extension iCampusApi: TargetType {
             return .requestParameters(parameters: ["Grade.user_id": userId], encoding: URLEncoding.queryString)
         case let .getCourse(courseId):
             return .requestParameters(parameters: ["Course.course_id": courseId], encoding: URLEncoding.queryString)
+        case let .getRequests(userId):
+            return .requestParameters(parameters: ["Request.user_id": userId], encoding: URLEncoding.queryString)
         case let .addRequest(requestType, text, userId):
             var params: [String: Any] = [:]
             params["request_type"] = requestType
-            params["request_time"] = Date()
+            params["request_time"] = CustomDateTransform().transformToJSON(Date())
             params["text"] = text
             params["status"] = "STATUS_TBD"
             params["user_id"] = userId

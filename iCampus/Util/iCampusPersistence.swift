@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import KeychainAccess
 
 protocol Persistence {
     func saveMember(_ member: Member)
@@ -16,6 +17,8 @@ protocol Persistence {
 
 // swiftlint:disable type_name
 class iCampusPersistence: Persistence {
+    
+    private let keychain = Keychain(service: "com.rudeigerc.iCampus")
     
     func saveMember(_ member: Member) {
         deleteMember()

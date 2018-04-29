@@ -16,11 +16,20 @@ public enum RequestType: String {
     
     init?(_ requestType: String) {
         guard let last = requestType.components(separatedBy: "_").last else { return nil }
-        self.init(rawValue: last)
+        self.init(rawValue: last.lowercased())
     }
     
     var value: String {
-        return "TYPE_\(self.rawValue.uppercased)"
+        return "TYPE_\(self.rawValue.uppercased())"
+    }
+    
+    var text: String {
+        switch self {
+        case .scholar:
+            return "奖学金"
+        case .leave:
+            return "请假"
+        }
     }
 }
 
@@ -31,11 +40,22 @@ public enum RequestStatus: String {
     
     init?(_ requestStatus: String) {
         guard let last = requestStatus.components(separatedBy: "_").last else { return nil }
-        self.init(rawValue: last)
+        self.init(rawValue: last.lowercased())
     }
     
     var value: String {
-        return "STATUS_\(self.rawValue.uppercased)"
+        return "STATUS_\(self.rawValue.uppercased())"
+    }
+    
+    var text: String {
+        switch self {
+        case .tbd:
+            return "待核准"
+        case .approved:
+            return "已核准"
+        case .rejected:
+            return "已拒绝"
+        }
     }
 }
 

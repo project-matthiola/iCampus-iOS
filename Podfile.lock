@@ -3,6 +3,7 @@ PODS:
   - CryptoSwift (0.9.0)
   - Differentiator (3.0.2)
   - IKEventSource (2.1.0)
+  - KeychainAccess (3.1.1)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -28,6 +29,7 @@ PODS:
 DEPENDENCIES:
   - CryptoSwift
   - IKEventSource (from `https://github.com/inaka/EventSource.git`)
+  - KeychainAccess
   - Moya/RxSwift
   - ObjectMapper
   - PKHUD (~> 5.0)
@@ -43,6 +45,7 @@ SPEC REPOS:
     - Alamofire
     - CryptoSwift
     - Differentiator
+    - KeychainAccess
     - Moya
     - ObjectMapper
     - PKHUD
@@ -68,6 +71,7 @@ SPEC CHECKSUMS:
   CryptoSwift: bca8c5b653dcc2d9734409242a070ff53bafac86
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   IKEventSource: eeb589b05053ac0e1314dea015f5a8d3c3cb24ab
+  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
@@ -79,6 +83,6 @@ SPEC CHECKSUMS:
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
 
-PODFILE CHECKSUM: f650e8cd87fc001f4d8dcc3f97731b93e8348182
+PODFILE CHECKSUM: 683b578e0a37fc971272e0bbf02dfecb733d7022
 
 COCOAPODS: 1.5.0

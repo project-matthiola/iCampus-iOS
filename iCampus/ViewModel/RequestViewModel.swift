@@ -11,20 +11,21 @@ import RxSwift
 
 class RequestViewModel {
     
-    func getRequests() -> Observable<[Request]> {
-        return provider.rx.request(.getRequest(id: nil))
+    func getRequests(by userId: String) -> Observable<[Request]> {
+        return provider.rx.request(.getRequests(userId: userId))
             .asObservable()
             .filterSuccessfulStatusCodes()
             .mapJSON()
             .mapArray(type: Request.self, key: "Request")
     }
     
-    func getRequest(by id: Int) -> Observable<Request> {
-        return provider.rx.request(.getRequest(id: String(id)))
+    func addRequest(requestType: RequestType, text: String, userId: String) -> Observable<Bool> {
+        return provider.rx.request(.addRequest(requestType: requestType.value, text: text, userId: userId))
             .asObservable()
             .filterSuccessfulStatusCodes()
             .mapJSON()
             .mapObject(type: Request.self)
+            .map { $0.id != nil }
     }
     
 }
