@@ -99,7 +99,7 @@ extension iCampusApi: TargetType {
             params["request_type"] = requestType
             params["request_time"] = Date()
             params["text"] = text
-            params["status"] = "STATUS"
+            params["status"] = "STATUS_TBD"
             params["user_id"] = userId
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         }

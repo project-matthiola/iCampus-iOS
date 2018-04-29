@@ -13,6 +13,7 @@ target 'iCampus' do
   pod 'ObjectMapper'
   pod 'PKHUD', '~> 5.0'
   pod 'CryptoSwift'
+  pod 'IKEventSource', :git => 'https://github.com/inaka/EventSource.git'
   
   pod 'SwiftLint'
 

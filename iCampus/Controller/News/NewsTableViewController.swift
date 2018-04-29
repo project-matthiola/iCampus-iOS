@@ -17,6 +17,8 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
+    var id: Int?
+    
 }
 
 class NewsTableViewController: UITableViewController {
@@ -36,6 +38,7 @@ class NewsTableViewController: UITableViewController {
             let cell = tv.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: ip) as! NewsTableViewCell
             cell.titleLabel.text = item.title
             cell.timeLabel.text = CustomDateTransform().transformToJSON(item.newsTime)
+            cell.id = item.id
             return cell
         })
         
@@ -70,6 +73,14 @@ class NewsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 78.0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let button = sender as? UIButton, let cell = button.superview?.superview?.superview as? NewsTableViewCell {
+            let newsDetailTableViewController = segue.destination as! NewsDetailTableViewController
+            newsDetailTableViewController.newsId = cell.id
+            newsDetailTableViewController.navigationItem.title = cell.titleLabel.text
+        }
     }
 
 }

@@ -32,7 +32,7 @@ class InformationDetailTableViewController: UITableViewController {
         informationViewModel
             .getInformation(by: informationId!)
             .share(replay: 1)
-            .subscribe(onNext: { information in
+            .subscribe(onNext: { [unowned self] information in
                 self.information = information
                 self.titleLabel.text = information.title
                 self.timeLabel.text = CustomDateTransform().transformToJSON(information.informationTime)
@@ -47,7 +47,6 @@ class InformationDetailTableViewController: UITableViewController {
                 } else {
                     self.mainTextView.text = information.text
                 }
-                self.mainTextView.text = information.text ?? ""
             }, onCompleted: {
                 self.tableView.beginUpdates()
                 self.tableView.endUpdates()
