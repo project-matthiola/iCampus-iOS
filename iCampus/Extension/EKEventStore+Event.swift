@@ -25,7 +25,7 @@ extension EKEventStore: iCampusEvent {
         if UserDefaults.standard.object(forKey: "calendarIdentifier") == nil {
             let calender = EKCalendar(for: .event, eventStore: self)
             calender.title = "iCampus"
-            calender.cgColor = UIColor(hex6: 0xD0021B).cgColor
+            calender.cgColor = UIColor.iCampus.cgColor
             calender.source = self.defaultCalendarForNewEvents?.source
             do {
                 try self.saveCalendar(calender, commit: true)

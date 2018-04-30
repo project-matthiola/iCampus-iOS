@@ -16,11 +16,15 @@ enum iCampusApi {
     case getMember(id: Int)
     case addMember(userId: String, password: String, phone: String)
     case updateMember(id: Int, userId: String?, password: String?, phone: String?, role: String?, classId: String?, name: String?)
-    case getInformation(id: String?)
     case login(userId: String)
+    case getAvatar(id: Int)
+    case uploadAvatar(id: Int, image: UIImage)
+    
+    case getNews(id: String?)
+    case getInformation(id: String?)
+    
     case getGrades(userId: String)
     case getCourse(courseId: String)
-    case getNews(id: String?)
     case getRequests(userId: String)
     case addRequest(requestType: String?, text: String?, userId: String)
 }
@@ -28,14 +32,19 @@ enum iCampusApi {
 extension iCampusApi: TargetType {
     
     var baseURL: URL {
-        return URL(string: "")!
+        switch self {
+        case .getAvatar:
+            return URL(string: "")!
+        default:
+            return URL(string: "")!
+        }
     }
     
     var path: String {
         switch self {
         case .addMember, .login:
             return "/Member"
-        case .getMember(let id), .updateMember(let id, _, _, _, _, _, _):
+        case .getMember(let id), .updateMember(let id, _, _, _, _, _, _), .getAvatar(let id), .uploadAvatar(let id, _):
             return "/Member/\(id)"
         case .getInformation(let id):
             return "/Information/\(id ?? "")"
@@ -52,9 +61,9 @@ extension iCampusApi: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .getMember, .getInformation, .login, .getGrades, .getCourse, .getNews, .getRequests:
+        case .getMember, .getAvatar, .getInformation, .login, .getGrades, .getCourse, .getNews, .getRequests:
             return .get
-        case .addMember, .addRequest:
+        case .addMember, .uploadAvatar, .addRequest:
             return .post
         case .updateMember:
             return .put
@@ -67,7 +76,7 @@ extension iCampusApi: TargetType {
     
     var task: Task {
         switch self {
-        case .getMember, .getInformation, .getNews:
+        case .getMember, .getAvatar, .getInformation, .getNews:
             return .requestPlain
         case let .addMember(userId, password, phone):
             return .requestParameters(parameters: [
@@ -86,6 +95,10 @@ extension iCampusApi: TargetType {
             params["class_id"] = classId
             params["name"] = name
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+        case let .uploadAvatar(_, image):
+            guard let data = UIImageJPEGRepresentation(image, 1) else { return .uploadMultipart([]) }
+            let imageData = MultipartFormData(provider: .data(data), name: "file", fileName: "avatar.jpg", mimeType: "image/jpeg")
+            return .uploadMultipart([imageData])
         case let .login(userId):
             return .requestParameters(parameters: ["Member.user_id": userId], encoding: URLEncoding.queryString)
         case let .getGrades(userId):
@@ -106,7 +119,12 @@ extension iCampusApi: TargetType {
     }
     
     var headers: [String: String]? {
-        return ["Content-type": "application/json"]
+        switch self {
+        case .getAvatar, .uploadAvatar:
+            return nil
+        default:
+            return ["Content-type": "application/json"]
+        }
     }
     
 }

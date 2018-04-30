@@ -18,4 +18,10 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
+    static let iCampus = UIColor(hex6: 0xD0021B)
+    
+    static let wasurenagusa = UIColor(hex6: 0x7DB9DE)
+    static let ake = UIColor(hex6: 0xCC543A)
+    static let midori = UIColor(hex6: 0x227D51)
+    
 }

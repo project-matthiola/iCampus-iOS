@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Moya
 
 class MemberViewModel {
     
@@ -43,6 +44,22 @@ class MemberViewModel {
             .mapJSON()
             .mapObject(type: Member.self)
             .map { $0.id != nil }
+    }
+    
+    func getAvatar(id: Int) -> Observable<Image?> {
+        return provider.rx.request(.getAvatar(id: id))
+            .asObservable()
+            .filterSuccessfulStatusCodes()
+            .mapImage()
+            .catchErrorJustReturn(#imageLiteral(resourceName: "icon_red"))
+    }
+    
+    func uploadAvatar(id: Int, image: UIImage) -> Observable<Bool> {
+        return provider.rx.request(.uploadAvatar(id: id, image: image))
+            .asObservable()
+            .filterSuccessfulStatusCodes()
+            .mapString()
+            .map { print($0); return $0 == "Upload Success" }
     }
     
 }

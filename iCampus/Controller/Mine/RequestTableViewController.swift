@@ -16,6 +16,7 @@ class RequestTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var requestStatusLabel: UILabel!
+    @IBOutlet weak var requestTypeLabel: UILabel!
     @IBOutlet weak var mainTextLabel: UILabel!
     
     override func awakeFromNib() {
@@ -23,6 +24,8 @@ class RequestTableViewCell: UITableViewCell {
         
         requestStatusLabel.layer.cornerRadius = 5.0
         requestStatusLabel.layer.masksToBounds = true
+        requestTypeLabel.layer.cornerRadius = 5.0
+        requestTypeLabel.layer.masksToBounds = true
     }
 }
 
@@ -47,15 +50,25 @@ class RequestTableViewController: UITableViewController {
             let cell = tv.dequeueReusableCell(withIdentifier: "RequestTableViewCell", for: ip) as! RequestTableViewCell
             cell.timeLabel.text = CustomDateTransform().transformToJSON(item.requestTime)
             cell.requestStatusLabel.text = item.status?.text
+            cell.requestTypeLabel.text = item.requestType?.text
             cell.mainTextLabel.text = item.text
+            
             switch item.status! {
             case .tbd:
                 cell.requestStatusLabel.backgroundColor = .gray
             case .approved:
-                cell.requestStatusLabel.backgroundColor = .green
+                cell.requestStatusLabel.backgroundColor = .midori
             case .rejected:
                 cell.requestStatusLabel.backgroundColor = .red
             }
+            
+            switch item.requestType! {
+            case .scholar:
+                cell.requestTypeLabel.backgroundColor = .wasurenagusa
+            case .leave:
+                cell.requestTypeLabel.backgroundColor = .ake
+            }
+            
             return cell
         })
         

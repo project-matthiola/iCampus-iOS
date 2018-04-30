@@ -43,9 +43,9 @@ class GradeTableViewController: UITableViewController {
             case 60..<85:
                 cell.scoreLabel.textColor = .orange
             case 85...100:
-                cell.scoreLabel.textColor = .green
+                cell.scoreLabel.textColor = .midori
             default:
-                cell.scoreLabel.textColor = UIColor(hex6: 0xD0021B)
+                cell.scoreLabel.textColor = .iCampus
             }
             
             return cell
