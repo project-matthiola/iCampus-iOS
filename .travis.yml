@@ -4,3 +4,4 @@ xcode_scheme: iCampusTests
 before_install:
   - gem install cocoapods
   - pod --version
+  - pod repo update
