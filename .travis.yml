@@ -1,7 +1,12 @@
 language: swift
+osx_image: xcode9.3
 xcode_workspace: iCampus.xcworkspace # path to your xcodeproj folder
-xcode_scheme: iCampusTests
+xcode_scheme: iCampus
+branches:
+  only:
+    - master
 before_install:
-  - gem install cocoapods
-  - pod --version
+  - brew update
   - pod repo update
+script:
+  - xcodebuild -scheme iCampus -workspace iCampus.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 6s' -sdk iphonesimulator build test
